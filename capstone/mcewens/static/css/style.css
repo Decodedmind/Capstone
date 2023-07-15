@@ -175,7 +175,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	display: table;
 	width: 100%;
 	padding: 0;
-	background: url(../img/intro-bg.jpg) no-repeat center center;
+	background: url(../img/patrons.jpg) no-repeat center center;
 	background-color: #e5e5e5;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -242,7 +242,7 @@ header .intro-text {
 	padding: 0 0 60px 0;
 }
 #restaurant-menu .section-title {
-	background: #444 url(../img/menu-bg.jpg) center center no-repeat fixed;
+	background: #444 url(../img/farmer.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
 #restaurant-menu .section-title h2 {
@@ -587,7 +587,7 @@ color: #777;
 	background: rgb(119,153,54); /* Old browsers */
 	background: -moz-linear-gradient(top,#DB5C32  0%, #DB5C32 50%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, #DB5C32 0%,#DB5C32  50%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #DB5C32 0%, #DB5C32 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: linear-gradient(to bottom, #DB5C32 0%,  50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', endColorstr='#8eb640', GradientType=0 ); /* IE6-9 */
 }
 #footer .social {
