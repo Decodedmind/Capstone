@@ -9,4 +9,5 @@ from django.db import models
 # Description
 # Price
 # Price percentage option?
+# Current item?
 # Submit button for forms
