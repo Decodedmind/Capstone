@@ -21,9 +21,7 @@ class MenuItem(models.Model):
     # Possibility of making exclusive toggle for ease of use? If Lunch, not WIne? Research?
 
     # Description - check
-    description = models.CharField(
-        max_length=50, blank=True, null=True
-    )  # should null be true?
+    description = models.CharField(max_length=50, blank=True)
 
     # Price - check
     price = models.FloatField()
@@ -33,16 +31,54 @@ class MenuItem(models.Model):
     current = models.IntegerField(default=1)
 
 
-def create_menu_item(name, category, description, price, current):
+# Constructor - default values left blank
+def create_menu_item(name, description, price):
     item = MenuItem(
         name=name,
-        category=category,
         description=description,
         price=price,
-        current=current,
     )
     item.save()
     return item
 
 
-# Submit button for forms
+def get_current_items():
+    return MenuItem.objects.filter(current=1)
+
+
+def get_menu_items_by_category(cat):
+    return MenuItem.objects.filter(category=cat)
+
+
+def set_current_status(item_id, status):
+    try:
+        item = MenuItem.objects.get(id=item_id)
+        item.current = status
+        item.save()
+        return item
+    except:
+        raise ValueError("Item not found in database!")
+
+
+# Should be able to change the category
+def set_category(item_id, cat):
+    try:
+        item = MenuItem.objects.get(id=item_id)
+        item.category = cat
+        item.save()
+        return item
+    except:
+        raise ValueError("Item not found in database!")
+
+
+def change_menu_item_name(item_id, new_n):
+    try:
+        item = MenuItem.objects.get(id=item_id)
+        item.name = new_n
+        item.save()
+        return item
+    except:
+        raise ValueError("Item not found in database!")
+
+
+# Submit button for forms?
