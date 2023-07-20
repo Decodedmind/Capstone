@@ -81,4 +81,14 @@ def change_menu_item_name(item_id, new_n):
         raise ValueError("Item not found in database!")
 
 
+def change_menu_item_price(item_id, new_p):
+    try:
+        item = MenuItem.objects.get(id=item_id)
+        item.price = new_p
+        item.save()
+        return item
+    except:
+        raise ValueError("Item not found in database!")
+
+
 # Submit button for forms?

@@ -71,3 +71,9 @@ class Test_MenuItem(TestCase):
         models.change_menu_item_name(self.item1.id, "New")
         self.item1.refresh_from_db()
         assert self.item1.name == "New"
+
+    def test_change_price(self):
+        assert self.item2.price == 50
+        models.change_menu_item_price(self.item2.id, 100)
+        self.item2.refresh_from_db()
+        assert self.item2.price == 100
