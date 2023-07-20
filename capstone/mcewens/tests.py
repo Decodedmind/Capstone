@@ -77,3 +77,9 @@ class Test_MenuItem(TestCase):
         models.change_menu_item_price(self.item2.id, 100)
         self.item2.refresh_from_db()
         assert self.item2.price == 100
+
+    def test_change_description(self):
+        assert self.item3.description == "This is a dish"
+        models.change_menu_item_description(self.item3.id, "I have altered the dish")
+        self.item3.refresh_from_db()
+        assert self.item3.description == "I have altered the dish"

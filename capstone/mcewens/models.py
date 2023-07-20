@@ -81,6 +81,16 @@ def change_menu_item_name(item_id, new_n):
         raise ValueError("Item not found in database!")
 
 
+def change_menu_item_description(item_id, new_d):
+    try:
+        item = MenuItem.objects.get(id=item_id)
+        item.description = new_d
+        item.save()
+        return item
+    except:
+        raise ValueError("Item not found in database!")
+
+
 def change_menu_item_price(item_id, new_p):
     try:
         item = MenuItem.objects.get(id=item_id)
