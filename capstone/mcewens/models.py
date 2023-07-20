@@ -8,16 +8,14 @@ class MenuItem(models.Model):
 
     # Category - Lunch/ Dinner / Desert / Wine - check
     CATEGORY_CHOICES = (
-        ("Unselected", "Unselected"),
+        ("Appetizer", "Appetizer"),
         ("Lunch", "Lunch"),
         ("Dinner", "Dinner"),
         ("Dessert", "Dessert"),
         ("Wine", "Wine"),
     )
 
-    category = models.CharField(
-        choices=CATEGORY_CHOICES, default="Unselected", max_length=50, blank=True
-    )
+    category = models.CharField(choices=CATEGORY_CHOICES, max_length=50, blank=True)
     # Possibility of making exclusive toggle for ease of use? If Lunch, not WIne? Research?
 
     # Description - check
