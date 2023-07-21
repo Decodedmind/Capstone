@@ -55,6 +55,10 @@ def get_menu_items_by_name(name):
         return "No results found!"
 
 
+def get_current_by_category(cat):
+    return MenuItem.objects.filter(category=cat, current=1)
+
+
 def set_current_status(item_id, status):
     try:
         item = MenuItem.objects.get(id=item_id)

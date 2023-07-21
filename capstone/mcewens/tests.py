@@ -26,6 +26,7 @@ class Test_MenuItem(TestCase):
         assert self.item1.description == "This is a dish"
         assert self.item1.price == 50.00
         assert self.item1.current == 1
+        assert self.item1.category == ""
 
     def test_current_items(self):
         # Default to current
@@ -86,3 +87,10 @@ class Test_MenuItem(TestCase):
         assert self.item3.name == "Test3"
         assert models.get_menu_items_by_name("test3") == self.item3
         assert models.get_menu_items_by_name("test4") == "No results found!"
+
+    def test_get_current_by_cat(self):
+        assert self.item1.category == ""
+        result = models.get_current_by_category("")
+        assert len(result) == 3
+        result = models.get_current_by_category("Wine")
+        assert len(result) == 0
