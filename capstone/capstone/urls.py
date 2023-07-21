@@ -6,5 +6,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("Mcewens/", hello_world, name="hello_world"),
     path("", index, name="index"),
-    path("test/", create_menu_item_view, name="test"),
+    path("test/", EXAMPLE_create_menu_item_view, name="test"),
 ]

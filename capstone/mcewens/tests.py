@@ -65,21 +65,21 @@ class Test_MenuItem(TestCase):
         assert self.item1.category == "Wine"
         assert len(models.get_menu_items_by_category("Wine")) == 1
 
-    def test_change_name(self):
+    def test_set_name(self):
         assert self.item1.name == "Test1"
-        models.change_menu_item_name(self.item1.id, "New")
+        models.set_menu_item_name(self.item1.id, "New")
         self.item1.refresh_from_db()
         assert self.item1.name == "New"
 
-    def test_change_price(self):
+    def test_set_price(self):
         assert self.item2.price == 50
-        models.change_menu_item_price(self.item2.id, 100)
+        models.set_menu_item_price(self.item2.id, 100)
         self.item2.refresh_from_db()
         assert self.item2.price == 100
 
-    def test_change_description(self):
+    def test_set_description(self):
         assert self.item3.description == "This is a dish"
-        models.change_menu_item_description(self.item3.id, "I have altered the dish")
+        models.set_menu_item_description(self.item3.id, "I have altered the dish")
         self.item3.refresh_from_db()
         assert self.item3.description == "I have altered the dish"
 
