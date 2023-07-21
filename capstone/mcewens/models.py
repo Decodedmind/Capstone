@@ -32,7 +32,7 @@ class MenuItem(models.Model):
 # Constructor - default values left blank
 def create_menu_item(name, description, price):
     item = MenuItem(
-        name=name,
+        name=name.title(),
         description=description,
         price=price,
     )
@@ -46,6 +46,13 @@ def get_current_items():
 
 def get_menu_items_by_category(cat):
     return MenuItem.objects.filter(category=cat)
+
+
+def get_menu_items_by_name(name):
+    try:
+        return MenuItem.objects.get(name=name.title())
+    except:
+        return "No results found!"
 
 
 def set_current_status(item_id, status):

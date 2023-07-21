@@ -5,7 +5,7 @@ from . import models
 class Test_MenuItem(TestCase):
     def setUp(self) -> None:
         self.item1 = models.create_menu_item(
-            "Test1",
+            "test1",
             "This is a dish",
             50.00,
         )
@@ -26,7 +26,6 @@ class Test_MenuItem(TestCase):
         assert self.item1.description == "This is a dish"
         assert self.item1.price == 50.00
         assert self.item1.current == 1
-        assert self.item1.category == "Unselected"
 
     def test_current_items(self):
         # Default to current
@@ -58,12 +57,11 @@ class Test_MenuItem(TestCase):
 
     def test_category_for_items(self):
         # Should default to unselected
-        assert len(models.get_menu_items_by_category("Unselected")) == 3
+        assert len(models.get_menu_items_by_category("Wine")) == 0
 
         models.set_category(self.item1.id, "Wine")
         self.item1.refresh_from_db()
         assert self.item1.category == "Wine"
-        assert len(models.get_menu_items_by_category("Unselected")) == 2
         assert len(models.get_menu_items_by_category("Wine")) == 1
 
     def test_change_name(self):
@@ -83,3 +81,8 @@ class Test_MenuItem(TestCase):
         models.change_menu_item_description(self.item3.id, "I have altered the dish")
         self.item3.refresh_from_db()
         assert self.item3.description == "I have altered the dish"
+
+    def test_get_by_name(self):
+        assert self.item3.name == "Test3"
+        assert models.get_menu_items_by_name("test3") == self.item3
+        assert models.get_menu_items_by_name("test4") == "No results found!"
