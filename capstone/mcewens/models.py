@@ -15,7 +15,7 @@ class MenuItem(models.Model):
         ("Wine", "Wine"),
     )
 
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=50, blank=True)
+    category = models.CharField(choices=CATEGORY_CHOICES, max_length=50)
     # Possibility of making exclusive toggle for ease of use? If Lunch, not WIne? Research?
 
     # Description - check
@@ -80,7 +80,7 @@ def set_category(item_id, cat):
         raise ValueError("Item not found in database!")
 
 
-def change_menu_item_name(item_id, new_n):
+def set_menu_item_name(item_id, new_n):
     try:
         item = MenuItem.objects.get(id=item_id)
         item.name = new_n
@@ -90,7 +90,7 @@ def change_menu_item_name(item_id, new_n):
         raise ValueError("Item not found in database!")
 
 
-def change_menu_item_description(item_id, new_d):
+def set_menu_item_description(item_id, new_d):
     try:
         item = MenuItem.objects.get(id=item_id)
         item.description = new_d
@@ -100,7 +100,7 @@ def change_menu_item_description(item_id, new_d):
         raise ValueError("Item not found in database!")
 
 
-def change_menu_item_price(item_id, new_p):
+def set_menu_item_price(item_id, new_p):
     try:
         item = MenuItem.objects.get(id=item_id)
         item.price = new_p
