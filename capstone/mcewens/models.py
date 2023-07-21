@@ -108,6 +108,3 @@ def change_menu_item_price(item_id, new_p):
         return item
     except:
         raise ValueError("Item not found in database!")
-
-
-# Submit button for forms?
