@@ -310,12 +310,12 @@ header .intro-text {
 ul.cat li {
 	display: inline-block;
 }
-li {
+ol.type li {
 	display: inline-block;
 	margin: 0 10px;
 	padding: 20px 0;
 }
-li a {
+ol.type li a {
 	color: #999;
 	font-weight: 500;
 	font-size: 14px;
@@ -326,11 +326,11 @@ li a {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
-li a.active {
+ol.type li a.active {
 	color: #fff;
 	background-color: #DB5C32;
 }
-li a:hover {
+ol.type li a:hover {
 	color: #fff;
 	background-color: #DB5C32;
 }
@@ -584,8 +584,6 @@ color: #777;
 #footer .copyrights {
 	padding: 20px 0;
 	margin-top: 50px;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#779936+0,8eb640+50 */
-	background: rgb(119,153,54); /* Old browsers */
 	background: -moz-linear-gradient(top,#DB5C32  0%, #DB5C32 50%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, #DB5C32 0%,#DB5C32  50%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom, #DB5C32 0%,  50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
