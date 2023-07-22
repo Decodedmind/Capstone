@@ -47,5 +47,5 @@ This is EXACTLY as written, so make sure you account for that before calling the
 """
 
 
-def EXAMPLE_current_items_by_category_view(request):
-    context = {"items": models.get_current_by_category("Wine")}
+# def EXAMPLE_current_items_by_category_view(request):
+#     context = {"items": models.get_current_by_category("Wine")}
