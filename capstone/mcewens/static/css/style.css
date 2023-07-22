@@ -174,7 +174,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 .intro {
 	display: table;
 	width: 100%;
-	padding: 0;
+	height: 100vh;
 	background: url(../img/patrons.jpg) no-repeat center center;
 	background-color: #e5e5e5;
 	-webkit-background-size: cover;
@@ -184,6 +184,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 }
 .intro .overlay {
 	background: rgba(0,0,0,0.4);
+	height: 100vh;
 }
 .intro h1 {
 	font-family: 'Dancing Script', cursive;
