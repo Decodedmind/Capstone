@@ -13,9 +13,11 @@ def hello_world(request):
 def index(request):
     return render(request, "index.html")
 
+
 def deleteMenuItem(request, name):
     delete_menu_item(name)
     return redirect("restaurant_admin")
+
 
 def restaurant_admin(request):
     form = MenuItemForm()
@@ -29,7 +31,6 @@ def restaurant_admin(request):
 
     context = {"form": form, "menuItems": menuItems}
     return render(request, "restaurantadmin.html", context)
-
 
 
 # @login_required
@@ -72,7 +73,9 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    return render(request, "dinner.html")
+    dinner_item = get_current_by_category("dinner").values()
+    dinner_list = list(dinner_item)
+    return render(request, "dinner.html", {"items": dinner_item})
 
 
 def home_view(request):
