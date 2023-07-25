@@ -40,6 +40,23 @@ def EXAMPLE_create_menu_item_view(request):
         return render(request, "test.html", {"form": form})
 
 
+def get_items_by_category_view(request):
+    if request.method == "GET":
+        category = request.GET.get("category")
+        if category in ["Appetizer", "Lunch", "Dinner", "Dessert", "Wine"]:
+            items = models.get_current_by_category(category)
+            return HttpResponse(items)
+    return HttpResponse("Invalid category")
+
+
+def dinner_view(request):
+    return render(request, "dinner.html")
+
+
+def home_view(request):
+    return render(request, "home.html")
+
+
 """
 NEEDED ON FRONT END: BUTTON TO RETURN STRING OF "CATEGORY" TO THIS FUNCTION 
 Categories are: Appetizer, Lunch, Dinner, Dessert, Wine

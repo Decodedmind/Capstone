@@ -1,0 +1,271 @@
+{% extends 'index.html' %}
+{% load static %}
+{%block content%}
+<div id="about">
+    <div class="container">
+      <div class="row">
+        <div class=" col-md-6">
+          <div class="about-img">
+            <img src="{% static 'img/marcelous.jpg' %}" class="img-responsive" alt="" />
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="about-text">
+            <h2>Our Story</h2>
+            <hr />
+            <p>
+              Welcome to McEwen's, a culinary landmark nestled in the heart of Oxford, Mississippi. Our story began with Chef James McEwen's vision to combine his southern heritage with innovative flavors, resulting in a dining experience that has captivated locals and visitors alike. From the moment you step through our doors, you'll be enveloped in the tantalizing aroma of expertly crafted dishes showcasing locally sourced ingredients. Our menu pays homage to Mississippi's culinary traditions, featuring delights such as crispy catfish, succulent smoked pork ribs, and mouthwatering pecan pie. Beyond the exceptional food, McEwen's embraces the spirit of community, supporting local farmers and nurturing aspiring chefs through our culinary scholarship program. As we continue to create new flavors, forge friendships, and make lasting memories, McEwen's remains a cherished destination where the power of good food brings people together. Join us on this culinary journey and experience the magic of McEwen's.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Section -->
+  <div id="portfolio">
+    <div class="section-title text-center center">
+      <div class="overlay">
+        <h2>Gallery</h2>
+        <hr />
+        <p>
+          Cooking is love made visible. - Anonymous
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="categories">
+          <ul class="cat">
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="portfolio-items">
+        <div class="col-md-4 ">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a>
+                  <div class="hover-text">
+                    <h4>Lamb Mint couscous</h4>
+                  </div>
+                  <img
+                    src="{% static 'img/portfolio/dish1.jpg' %}"
+                    class="img-responsive"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a    
+                >
+              <div class="hover-text">
+                <h4>Cabballe Roll</h4>
+              </div>
+                  <img
+                    src="{% static 'img/portfolio/dish4.jpg' %}"
+                    class="img-responsive"
+                    alt="Project Title"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a
+    
+                
+                  data-lightbox-gallery="gallery1"
+                >
+                  <div class="hover-text">
+                    <h4>pork </h4>
+                  </div>
+                  <img
+                    src="{% static 'img/portfolio/dish2.jpg' %}"
+                    class="img-responsive"
+                    alt="Project Title"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a>
+                  <div class="hover-text">
+                    <h4>Lovers Dessert</h4>
+                  </div>
+                  <img
+                    src="{% static 'img/portfolio/dish5.jpg' %}"
+                    class="img-responsive"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a>
+                  <div class="hover-text">
+                    <h4>halibut</h4>
+                  </div>
+                  <img
+                    src="{% static 'img/portfolio/dish6.jpg' %}"
+                    class="img-responsive"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a>
+                  <div class="hover-text">
+                    <h4>Duck</h4>
+                  </div>
+                  <img
+                    src="{% static 'img/portfolio/duckdish.jpg' %}"
+                    class="img-responsive"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Call Reservation Section -->
+  <div id="call-reservation" class="text-center">
+    <div class="container">
+      <h2>
+        Make a reservation with <strong>Open table</strong> or Call <strong>1-662-234-7003</strong>
+      </h2>
+    </div>
+  </div>
+  <!-- Contact Section -->
+  <div id="contact" class="text-center">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Contact</h2>
+        <hr />
+        <p>
+          
+        </p>
+      </div>
+      <div class="col-md-10 col-md-offset-1">
+        <form name="sentMessage" id="contactForm" novalidate>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  placeholder="Name"
+                  required="required"
+                />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="Email"
+                  required="required"
+                />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea
+              name="message"
+              id="message"
+              class="form-control"
+              rows="4"
+              placeholder="Message"
+              required
+            ></textarea>
+            <p class="help-block text-danger"></p>
+          </div>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-custom btn-lg">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container text-center">
+      <div class="col-md-4">
+        <h3>Address</h3>
+        <div class="contact-item">
+          <p>1110 Van Buren Ave</p>
+          <p>Oxford, MS 38655</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Opening Hours</h3>
+        <div class="contact-item">
+          <p>Sunday Brunch
+            10:30am-2:00pm 
+           
+          <p>Closed Monday & Tuesday</p>
+
+          <p> Lunch
+            Wednesday – Friday 11am – 2pm</p>
+
+            <p> Dinner
+            Wednesday-Saturday 5pm – 9pm</p></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Contact Info</h3>
+        <div class="contact-item">
+          <p>Phone: +1 662-234-7003</p>
+          <p>Email: lee@mcewensoxford.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid text-center copyrights">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="social">
+          <ul>
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
+            </li>
+          </ul>
+        </div>
+        <p>
+          &copy; 2023 McEwen's. All rights reserved. Designed by Eddie Rosas, Patrick Pettit, Jacob Padgett, Conner Grey.
+          <a href="https://basecampcodingacademy.org/" rel="nofollow"
+            >Base Camp Coding Academy Graduate Institute</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
