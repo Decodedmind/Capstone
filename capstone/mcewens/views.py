@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .forms import MenuItemForm
 from . import models
+from .models import *
 
 
 def hello_world(request):
@@ -11,6 +12,24 @@ def hello_world(request):
 
 def index(request):
     return render(request, "index.html")
+
+def deleteMenuItem(request, name):
+    delete_menu_item(name)
+    return redirect("restaurant_admin")
+
+def restaurant_admin(request):
+    form = MenuItemForm()
+    menuItems = MenuItem.objects.all()
+    if request.method == "POST":
+        form = MenuItemForm(request.POST)
+        name = request.POST.get("name")
+        description = request.POST.get("description")
+        price = request.POST.get("price")
+        create_menu_item(name, description, price)
+
+    context = {"form": form, "menuItems": menuItems}
+    return render(request, "restaurantadmin.html", context)
+
 
 
 # @login_required
@@ -41,6 +60,23 @@ def EXAMPLE_create_menu_item_view(request):
         # Theoretically this won't trigger in the final product
         form = MenuItemForm()
         return render(request, "test.html", {"form": form})
+
+
+def get_items_by_category_view(request):
+    if request.method == "GET":
+        category = request.GET.get("category")
+        if category in ["Appetizer", "Lunch", "Dinner", "Dessert", "Wine"]:
+            items = models.get_current_by_category(category)
+            return HttpResponse(items)
+    return HttpResponse("Invalid category")
+
+
+def dinner_view(request):
+    return render(request, "dinner.html")
+
+
+def home_view(request):
+    return render(request, "home.html")
 
 
 """

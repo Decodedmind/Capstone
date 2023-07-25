@@ -4,7 +4,7 @@ from django.db import models
 # one model - menu item
 class MenuItem(models.Model):
     # Name - check
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
 
     # Category - Lunch/ Dinner / Desert / Wine - check
     CATEGORY_CHOICES = (
@@ -19,7 +19,8 @@ class MenuItem(models.Model):
     # Possibility of making exclusive toggle for ease of use? If Lunch, not WIne? Research?
 
     # Description - check
-    description = models.CharField(max_length=50, blank=True)
+    description = models.TextField(max_length=200, blank=True)
+
 
     # Price - check
     price = models.FloatField()
@@ -111,3 +112,7 @@ def set_menu_item_price(item_id, new_p):
         return item
     except:
         raise ValueError("Item not found in database!")
+    
+def delete_menu_item(name):
+    menuItem = MenuItem.objects.get(name=name)
+    menuItem.delete()
