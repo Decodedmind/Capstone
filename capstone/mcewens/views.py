@@ -13,7 +13,7 @@ def index(request):
     return render(request, "index.html")
 
 
-# @login_required = uncomment this when admin page set up
+# @login_required
 def EXAMPLE_create_menu_item_view(request):
     if request.method == "POST":
         # Create object of form
@@ -32,6 +32,8 @@ def EXAMPLE_create_menu_item_view(request):
                 "current": item.current,
                 "form": form,
             }
+        # It's possible to add an "Is this information correct?" prompt followed by another click,
+        # Then you would just do item.save() if they click yes, else return to the form page
         return render(request, "test.html", context)
     else:
         # if request method isn't post, the form hasn't been filled out yet.
