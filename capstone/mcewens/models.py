@@ -28,6 +28,9 @@ class MenuItem(models.Model):
     # Current item? check
     current = models.IntegerField(default=1)
 
+    class Meta:
+        unique_together = ("name", "category")
+
 
 # Constructor - default values left blank
 def create_menu_item(name, description, price):
