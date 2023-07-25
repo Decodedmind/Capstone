@@ -8,6 +8,7 @@ body, html {
 	height: 100% !important;
 }
 h2 {
+	margin-bottom: 20px;
 	margin: 0 0 20px 0;
 	font-weight: 500;
 	font-size: 34px;
@@ -171,6 +172,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	background-color: #DB5C32;
 }
 /* Header Section */
+
 .intro {
 	display: table;
 	width: 100%;
@@ -240,7 +242,7 @@ header .intro-text {
 }
 /* Menu Section */
 #restaurant-menu {
-	padding: 0 0 60px 0;
+	padding:60px ;
 }
 #restaurant-menu .section-title {
 	background: #444 url(../img/farmer.jpg) center center no-repeat fixed;
@@ -584,8 +586,6 @@ color: #777;
 #footer .copyrights {
 	padding: 20px 0;
 	margin-top: 50px;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#779936+0,8eb640+50 */
-	background: rgb(119,153,54); /* Old browsers */
 	background: -moz-linear-gradient(top,#DB5C32  0%, #DB5C32 50%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, #DB5C32 0%,#DB5C32  50%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom, #DB5C32 0%,  50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */

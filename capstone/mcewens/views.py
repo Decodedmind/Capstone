@@ -32,7 +32,7 @@ def restaurant_admin(request):
 
 
 
-# @login_required = uncomment this when admin page set up
+# @login_required
 def EXAMPLE_create_menu_item_view(request):
     if request.method == "POST":
         # Create object of form
@@ -51,12 +51,31 @@ def EXAMPLE_create_menu_item_view(request):
                 "current": item.current,
                 "form": form,
             }
+        # It's possible to add an "Is this information correct?" prompt followed by another click,
+        # Then you would just do item.save() if they click yes, else return to the form page
         return render(request, "test.html", context)
     else:
         # if request method isn't post, the form hasn't been filled out yet.
         # Theoretically this won't trigger in the final product
         form = MenuItemForm()
         return render(request, "test.html", {"form": form})
+
+
+def get_items_by_category_view(request):
+    if request.method == "GET":
+        category = request.GET.get("category")
+        if category in ["Appetizer", "Lunch", "Dinner", "Dessert", "Wine"]:
+            items = models.get_current_by_category(category)
+            return HttpResponse(items)
+    return HttpResponse("Invalid category")
+
+
+def dinner_view(request):
+    return render(request, "dinner.html")
+
+
+def home_view(request):
+    return render(request, "home.html")
 
 
 """
