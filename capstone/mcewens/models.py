@@ -1,26 +1,39 @@
 from django.db import models
 
 
+# FIX ISSUE: VALUE ERROR ON SAVE DUPLICATES
+
+
 # one model - menu item
 class MenuItem(models.Model):
     # Name - check
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50)
 
-    # Category - Lunch/ Dinner / Desert / Wine - check
+    # Category - Lunch/ Dinner / Brunch / Wine - check
     CATEGORY_CHOICES = (
-        ("Appetizer", "Appetizer"),
         ("Lunch", "Lunch"),
         ("Dinner", "Dinner"),
-        ("Dessert", "Dessert"),
-        ("Wine", "Wine"),
+        ("Brunch", "Brunch"),
+        ("Wine and Cocktails", "Wine and Cocktails"),
     )
 
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=50)
     # Possibility of making exclusive toggle for ease of use? If Lunch, not WIne? Research?
 
-    # Description - check
-    description = models.TextField(max_length=200, blank=True)
+    TYPE_CHOICES = (
+        ("Appetizers", "Appetizers"),
+        ("Soups/Salads", "Soups/Salads"),
+        ("Entrees", "Entrees"),
+        ("Desserts", "Desserts"),
+        ("Wine", "Wine"),
+        ("Cocktails", "Cocktails"),
+    )
 
+    item_type = models.CharField(choices=TYPE_CHOICES, max_length=50)
+    # Types of item for the sake of menu
+
+    # Description - check
+    description = models.CharField(max_length=200, blank=True)
 
     # Price - check
     price = models.FloatField()
@@ -112,7 +125,12 @@ def set_menu_item_price(item_id, new_p):
         return item
     except:
         raise ValueError("Item not found in database!")
-    
-def delete_menu_item(id):
-    menuItem = MenuItem.objects.get(id=id)
-    menuItem.delete()
+
+
+def delete_menu_item(name):
+    try:
+        item = get_menu_items_by_name(name)
+        item.delete()
+        return "Deleted!"
+    except:
+        raise ValueError("Item not found in database!")

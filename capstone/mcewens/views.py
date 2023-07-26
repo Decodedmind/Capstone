@@ -13,12 +13,14 @@ def hello_world(request):
 def index(request):
     return render(request, "index.html")
 
+
 def deleteMenuItem(request, name):
     if request.method == 'POST':
         id = request.POST['delete']
         print(id)
         delete_menu_item(id)
     return redirect("restaurant_admin")
+
 
 def restaurant_admin(request):
     form = MenuItemForm()
@@ -32,7 +34,6 @@ def restaurant_admin(request):
 
     context = {"form": form, "menuItems": menuItems}
     return render(request, "restaurantadmin.html", context)
-
 
 
 # @login_required
@@ -52,6 +53,7 @@ def EXAMPLE_create_menu_item_view(request):
                 "description": item.description,
                 "category": item.category,
                 "current": item.current,
+                "type": item.item_type,
                 "form": form,
             }
             item.save()
@@ -75,11 +77,30 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    return render(request, "dinner.html")
+    TYPES = ("Appetizers", "Soups/Salads", "Entrees", "Desserts", "Wine", "Cocktails")
+    # get sub categories, pass in separately
+    dinner_item = get_current_by_category("dinner").values()
+    return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})
 
 
 def home_view(request):
     return render(request, "home.html")
+
+
+def lunch_view(request):
+    return render(request, "lunch.html")
+
+
+def brunch_view(request):
+    return render(request, "sundaybrunch.html")
+
+
+def wine_view(request):
+    return render(request, "wine.html")
+
+
+def menu_view(request):
+    return render(request, "menu.html")
 
 
 """

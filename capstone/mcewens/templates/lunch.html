@@ -3,7 +3,18 @@
 <div id="restaurant-menu">
   <div class="section-title text-center center">
     <div class="overlay">
-      <h2>Lunch</h2>
+      <li>
+        <a href="{% url 'lunch' %}" class="page-scroll"><h2>Lunch</h2></a>
+      </li>
+      <li>
+        <a href="{% url 'dinner' %}" class="page-scroll"><h2>Dinner</h2></a>
+      </li>
+      <li>
+        <a href="{% url 'brunch' %}" class="page-scroll"><h2>Brunch</h2></a>
+      </li>
+      <li>
+        <a href="{% url 'wine' %}" class="page-scroll"><h2>Wine</h2></a>
+      </li>
       <hr />
     </div>
   </div>
