@@ -10,5 +10,6 @@ class MenuItemForm(forms.ModelForm):
             "price",
             "description",
             "category",
+            "item_type",
         ]
         exclude = ["current"]
