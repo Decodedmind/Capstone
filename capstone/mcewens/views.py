@@ -50,6 +50,7 @@ def EXAMPLE_create_menu_item_view(request):
                 "description": item.description,
                 "category": item.category,
                 "current": item.current,
+                "type": item.item_type,
                 "form": form,
             }
             item.save()
@@ -72,10 +73,11 @@ def get_items_by_category_view(request):
     return HttpResponse("Invalid category")
 
 
-def menu_view(request):
+def dinner_view(request):
+    TYPES = ("Appetizers", "Soups/Salads", "Entrees", "Desserts", "Wine", "Cocktail")
+    # get sub categories, pass in separately
     dinner_item = get_current_by_category("dinner").values()
-    dinner_list = list(dinner_item)
-    return render(request, "menu.html", {"items": dinner_item})
+    return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})
 
 
 def home_view(request):
@@ -84,10 +86,6 @@ def home_view(request):
 
 def lunch_view(request):
     return render(request, "lunch.html")
-
-
-def dinner_view(request):
-    return render(request, "dinner.html")
 
 
 def brunch_view(request):

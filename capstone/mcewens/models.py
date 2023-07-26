@@ -1,21 +1,36 @@
 from django.db import models
 
 
+# FIX ISSUE: VALUE ERROR ON SAVE DUPLICATES
+
+
 # one model - menu item
 class MenuItem(models.Model):
     # Name - check
     name = models.CharField(max_length=50)
 
-    # Category - Lunch/ Dinner / Desert / Wine - check
+    # Category - Lunch/ Dinner / Brunch / Wine - check
     CATEGORY_CHOICES = (
         ("Lunch", "Lunch"),
         ("Dinner", "Dinner"),
         ("Brunch", "Brunch"),
-        ("Wine", "Wine"),
+        ("Wine and Cocktails", "Wine and Cocktails"),
     )
 
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=50)
     # Possibility of making exclusive toggle for ease of use? If Lunch, not WIne? Research?
+
+    TYPE_CHOICES = (
+        ("Appetizers", "Appetizers"),
+        ("Soups/Salads", "Soups/Salads"),
+        ("Entrees", "Entrees"),
+        ("Desserts", "Desserts"),
+        ("Wine", "Wine"),
+        ("Cocktail", "Cocktail"),
+    )
+
+    item_type = models.CharField(choices=TYPE_CHOICES, max_length=50)
+    # Types of item for the sake of menu
 
     # Description - check
     description = models.CharField(max_length=200, blank=True)
