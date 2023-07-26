@@ -4,14 +4,13 @@ from django.db import models
 # one model - menu item
 class MenuItem(models.Model):
     # Name - check
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50)
 
     # Category - Lunch/ Dinner / Desert / Wine - check
     CATEGORY_CHOICES = (
-        ("Appetizer", "Appetizer"),
         ("Lunch", "Lunch"),
         ("Dinner", "Dinner"),
-        ("Dessert", "Dessert"),
+        ("Brunch", "Brunch"),
         ("Wine", "Wine"),
     )
 
@@ -114,5 +113,9 @@ def set_menu_item_price(item_id, new_p):
 
 
 def delete_menu_item(name):
-    menuItem = MenuItem.objects.get(name=name)
-    menuItem.delete()
+    try:
+        item = get_menu_items_by_name(name)
+        item.delete()
+        return "Deleted!"
+    except:
+        raise ValueError("Item not found in database!")

@@ -19,11 +19,12 @@
   </form>
 </div>
 
-{%for menuItem in menuItems%} 
+{%for menuItem in menuItems%}
 {{menuItem.name}}</br>
 {{menuItem.description}}</br>
 {{menuItem.price}}</br>
-<a href="{%url 'delete' menuItem.name %}"
-  ><button type="button">Delete this menu item</button></a>
+{{menuItem.category}}</br>
+<a href="{%url 'delete' menuItem.name %}">
+  <button type="button">Delete this menu item</button></a>
 </br>
 {%endfor%}
