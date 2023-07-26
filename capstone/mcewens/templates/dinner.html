@@ -4,19 +4,27 @@
   <div class="section-title text-center center">
     <div class="overlay">
       <li>
-        <a href="{% url 'lunch' %}" class="page-scroll"><h2>Lunch</h2></a>
+        <a href="{% url 'lunch' %}" class="page-scroll">
+          <h2>Lunch</h2>
+        </a>
       </li>
       <hr>
       <li>
-        <a href="{% url 'dinner' %}" class="page-scroll"><h2>Dinner</h2></a>
+        <a href="{% url 'dinner' %}" class="page-scroll">
+          <h2>Dinner</h2>
+        </a>
       </li>
       <hr>
       <li>
-        <a href="{% url 'brunch' %}" class="page-scroll"><h2>Brunch</h2></a>
+        <a href="{% url 'brunch' %}" class="page-scroll">
+          <h2>Brunch</h2>
+        </a>
       </li>
       <hr>
       <li>
-        <a href="{% url 'wine' %}" class="page-scroll"><h2>Wine</h2></a>
+        <a href="{% url 'wine' %}" class="page-scroll">
+          <h2>Wine</h2>
+        </a>
       </li>
       <hr />
     </div>
@@ -62,9 +70,19 @@
       </div>
     </div>
   </div>
-  {% comment %} {% for item in items %}
-  <h2> {{item.subcat}} {{/h2}}
+
+=======
+  {% for type in types  %}
+  <h2> Type: {{type}}
+    <h2 />
+
+    {% for item in items %}
+    {% if item.item_type == type %}
     <p>Name: {{item.name}}</p>
-    {% endfor %} {% endcomment %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+>>>>>>> a368680f1ca7372ca305a04077696a2acc0d7b32
 </div>
 {% endblock content%}

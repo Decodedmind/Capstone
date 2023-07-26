@@ -23,8 +23,11 @@
 {{menuItem.name}}</br>
 {{menuItem.description}}</br>
 {{menuItem.price}}</br>
-{{menuItem.category}}</br>
-<a href="{%url 'delete' menuItem.name %}">
-  <button type="button">Delete this menu item</button></a>
+{{menuItem.id}}</br>
+
+<form action = "" method = "POST">
+  {% csrf_token %}
+  <input type="submit" name="delete" value={{menuItem.id}} />
+</form>
 </br>
 {%endfor%}
