@@ -7,6 +7,9 @@ body, html {
 	width: 100% !important;
 	height: 100% !important;
 }
+#restaurant-menu li a.page-scroll:hover h2 {
+	color: #DB5C32;
+  }
 h2 {
 	margin-bottom: 20px;
 	margin: 0 0 20px 0;
