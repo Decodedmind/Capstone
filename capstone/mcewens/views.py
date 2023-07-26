@@ -14,7 +14,10 @@ def index(request):
     return render(request, "index.html")
 
 def deleteMenuItem(request, name):
-    delete_menu_item(name)
+    if request.method == 'POST':
+        id = request.POST['delete']
+        print(id)
+        delete_menu_item(id)
     return redirect("restaurant_admin")
 
 def restaurant_admin(request):
@@ -51,6 +54,7 @@ def EXAMPLE_create_menu_item_view(request):
                 "current": item.current,
                 "form": form,
             }
+            item.save()
         # It's possible to add an "Is this information correct?" prompt followed by another click,
         # Then you would just do item.save() if they click yes, else return to the form page
         return render(request, "test.html", context)

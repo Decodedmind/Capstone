@@ -29,6 +29,9 @@ class MenuItem(models.Model):
     # Current item? check
     current = models.IntegerField(default=1)
 
+    class Meta:
+        unique_together = ("name", "category")
+
 
 # Constructor - default values left blank
 def create_menu_item(name, description, price):
@@ -110,6 +113,6 @@ def set_menu_item_price(item_id, new_p):
     except:
         raise ValueError("Item not found in database!")
     
-def delete_menu_item(name):
-    menuItem = MenuItem.objects.get(name=name)
+def delete_menu_item(id):
+    menuItem = MenuItem.objects.get(id=id)
     menuItem.delete()
