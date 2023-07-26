@@ -72,10 +72,10 @@ def get_items_by_category_view(request):
     return HttpResponse("Invalid category")
 
 
-def dinner_view(request):
+def menu_view(request):
     dinner_item = get_current_by_category("dinner").values()
     dinner_list = list(dinner_item)
-    return render(request, "dinner.html", {"items": dinner_item})
+    return render(request, "menu.html", {"items": dinner_item})
 
 
 def home_view(request):
@@ -84,6 +84,18 @@ def home_view(request):
 
 def lunch_view(request):
     return render(request, "lunch.html")
+
+
+def dinner_view(request):
+    return render(request, "dinner.html")
+
+
+def brunch_view(request):
+    return render(request, "sundaybrunch.html")
+
+
+def wine_view(request):
+    return render(request, "wine.html")
 
 
 """
