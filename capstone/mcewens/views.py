@@ -88,10 +88,6 @@ def lunch_view(request):
     return render(request, "lunch.html")
 
 
-def dinner_view(request):
-    return render(request, "dinner.html")
-
-
 def brunch_view(request):
     return render(request, "sundaybrunch.html")
 
