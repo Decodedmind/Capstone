@@ -15,8 +15,8 @@ def index(request):
 
 
 def deleteMenuItem(request, name):
-    if request.method == 'POST':
-        id = request.POST['delete']
+    if request.method == "POST":
+        id = request.POST["delete"]
         print(id)
         delete_menu_item(id)
     return redirect("restaurant_admin")
@@ -53,7 +53,7 @@ def EXAMPLE_create_menu_item_view(request):
                 "description": item.description,
                 "category": item.category,
                 "current": item.current,
-                "type": item.item_type,
+                "item_type": item.item_type,
                 "form": form,
             }
             item.save()

@@ -11,9 +11,9 @@ class MenuItem(models.Model):
 
     # Category - Lunch/ Dinner / Brunch / Wine - check
     CATEGORY_CHOICES = (
+        ("Brunch", "Brunch"),
         ("Lunch", "Lunch"),
         ("Dinner", "Dinner"),
-        ("Brunch", "Brunch"),
         ("Wine and Cocktails", "Wine and Cocktails"),
     )
 
@@ -29,7 +29,7 @@ class MenuItem(models.Model):
         ("Cocktails", "Cocktails"),
     )
 
-    item_type = models.CharField(choices=TYPE_CHOICES, max_length=50)
+    item_type = models.CharField(choices=TYPE_CHOICES, max_length=50, default="")
     # Types of item for the sake of menu
 
     # Description - check
