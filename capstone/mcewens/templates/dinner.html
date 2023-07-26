@@ -44,7 +44,8 @@
     </div>
   </div>
   {% for item in items %}
-  <p>Name: {{item.name}}</p>
-  {% endfor %}
+  <h2> {{item.subcat}} {{/h2}}
+    <p>Name: {{item.name}}</p>
+    {% endfor %}
 </div>
 {% endblock content%}
