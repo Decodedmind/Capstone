@@ -73,12 +73,17 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    dinner_item = get_current_by_category("Dinner").values()
+    dinner_item = get_current_by_category("dinner").values()
+    dinner_list = list(dinner_item)
     return render(request, "dinner.html", {"items": dinner_item})
 
 
 def home_view(request):
     return render(request, "home.html")
+
+
+def lunch_view(request):
+    return render(request, "lunch.html")
 
 
 """

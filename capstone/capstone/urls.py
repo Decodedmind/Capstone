@@ -11,4 +11,5 @@ urlpatterns = [
     path("delete/<name>", deleteMenuItem, name="delete"),
     path("dinner/", dinner_view, name="dinner"),
     path("home/", home_view, name="home"),
+    path("lunch/", lunch_view, name="lunch"),
 ]
