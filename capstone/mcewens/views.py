@@ -74,7 +74,7 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    TYPES = ("Appetizers", "Soups/Salads", "Entrees", "Desserts", "Wine", "Cocktail")
+    TYPES = ("Appetizers", "Soups/Salads", "Entrees", "Desserts", "Wine", "Cocktails")
     # get sub categories, pass in separately
     dinner_item = get_current_by_category("dinner").values()
     return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})

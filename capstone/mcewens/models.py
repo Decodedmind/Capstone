@@ -26,7 +26,7 @@ class MenuItem(models.Model):
         ("Entrees", "Entrees"),
         ("Desserts", "Desserts"),
         ("Wine", "Wine"),
-        ("Cocktail", "Cocktail"),
+        ("Cocktails", "Cocktails"),
     )
 
     item_type = models.CharField(choices=TYPE_CHOICES, max_length=50)
