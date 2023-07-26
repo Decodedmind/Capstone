@@ -69,32 +69,20 @@
         </div>
       </div>
     </div>
-  </div> {% endcomment %}
-  {% comment %} <<<<<<< HEAD {% comment %} {% for item in items %}
-  <h2>
-    {{item.subcat}} {{/h2}}
+  </div>
+
+=======
+  {% for type in types  %}
+  <h2> Type: {{type}}
+    <h2 />
+
+    {% for item in items %}
+    {% if item.item_type == type %}
     <p>Name: {{item.name}}</p>
-    {% endfor %} {% endcomment %} ======= {% for type in types %}
-    
-      
-        <div class="overlay">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <h2 class="menu-section-title">Type: {{ type }}</h2>
-          <hr />
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
 
-          {% for item in items %} {% if item.item_type == type %}
-
-          <div class="menu-item">
-            <div class="menu-item-name">{{ item.name }}</div>
-            <div class="menu-item-price">{{ item.price }}</div>
-            <div class="menu-item-description">{{ item.description }}</div>
-          </div>
-          {% endif %} {% endfor %} {% endfor %}
-        </div>
-        {% endblock content%}
-      </div>
-    </div>
-  </h2>
+>>>>>>> a368680f1ca7372ca305a04077696a2acc0d7b32
 </div>
+{% endblock content%}
