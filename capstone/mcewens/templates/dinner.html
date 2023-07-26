@@ -71,17 +71,15 @@
     </div>
   </div>
 
-  =======
   {% for type in types  %}
-  <h2> Type: {{type}}
-    <h2 />
+  <h2> Type: {{type}} </h2>
 
-    {% for item in items %}
-    {% if item.item_type == type %}
-    <p>Name: {{item.name}}</p>
-    {% endif %}
-    {% endfor %}
-    {% endfor %}
+  {% for item in items %}
+  {% if item.item_type == type %}
+  <p>Name: {{item.name}}</p>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
 
 </div>
 {% endblock content%}
