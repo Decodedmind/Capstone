@@ -88,6 +88,18 @@ def lunch_view(request):
     return render(request, "lunch.html")
 
 
+def dinner_view(request):
+    return render(request, "dinner.html")
+
+
+def brunch_view(request):
+    return render(request, "sundaybrunch.html")
+
+
+def wine_view(request):
+    return render(request, "wine.html")
+
+
 """
 NEEDED ON FRONT END: BUTTON TO RETURN STRING OF "CATEGORY" TO THIS FUNCTION 
 Categories are: Appetizer, Lunch, Dinner, Dessert, Wine
