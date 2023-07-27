@@ -2,37 +2,37 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testing</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing</title>
 </head>
 
 <body>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p }}
-        {% if form %}
-        <input type="submit" value="Submit" />
-        {% endif %}
-    </form>
-
-    {% if error is none and name %}
-    <p>
-        Name: {{ name }} <br />
-        Price: {{ price }} <br />
-        Description: {{ description }} <br />
-        Category: {{ category }}<br />
-        {%if current is 1 %}
-        Current: Yes!<br />
-        {% else %}
-        Current: No!<br />
-        {% endif %}
-        Type: {{ item_type }}<br />
-    </p>
-    {% else %}
-    <p>{{error}}</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p }}
+    {% if form %}
+    <input type="submit" value="Submit" />
     {% endif %}
+  </form>
+
+  {% if error is none and name %}
+  <p>
+    Name: {{ name }} <br />
+    Price: {{ price }} <br />
+    Description: {{ description }} <br />
+    Category: {{ category }}<br />
+    {%if current is 1 %}
+    Current: Yes!<br />
+    {% else %}
+    Current: No!<br />
+    {% endif %}
+    Type: {{ item_type }}<br />
+  </p>
+  {% else %}
+  <p>{{error}}</p>
+  {% endif %}
 </body>
 
 </html>
