@@ -70,11 +70,7 @@
       </div>
     </div>
   </div>
-  {% comment %} <<<<<<< HEAD {% comment %} {% for item in items %}
-  <h2>
-    {{item.subcat}} {{/h2}}
-    <p>Name: {{item.name}}</p>
-    {% endfor %} {% endcomment %} ======= {% for type in types %}
+  ======= {% for type in types %}
     
      
         <div class="overlay">
@@ -82,7 +78,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <h2 class="menu-section-title">{{ type }}</h2>
-          <hr />
+         <hr>
 
           {% for item in items %} {% if item.item_type == type %}
 
