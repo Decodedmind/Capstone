@@ -47,6 +47,7 @@ def EXAMPLE_create_menu_item_view(request):
         if form.is_valid():
             # if form is valid - which is should be always - spit all the information back on the screen
             # as an example
+            form = MenuItemForm()
             context = {
                 "id": item.id,
                 "name": item.name,
