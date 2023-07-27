@@ -91,6 +91,12 @@
   {% else %}
   <p class="error">{{ error }}</p>
   {% endif %}
+  {% for menuItem in menuItems %}
+  <div class="menu-item-{{menuItem.id}}">
+    <p>Name: {{menuItem.name}}</p>
+    <p>Description: {{menuItem.description}}</p>
+    <p>Price: {{menuItem.price}}</p>
+    {% endfor %}
 </body>
 
 </html>
