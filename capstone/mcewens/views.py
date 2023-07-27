@@ -38,6 +38,7 @@ def restaurant_admin(request):
 
 # @login_required
 def EXAMPLE_create_menu_item_view(request):
+    menuItems = MenuItem.objects.all()
     if request.method == "POST":
         # Create object of form
         form = MenuItemForm(request.POST)
@@ -55,6 +56,7 @@ def EXAMPLE_create_menu_item_view(request):
                 "current": item.current,
                 "item_type": item.item_type,
                 "form": form,
+                "menuItems": menuItems,
             }
             item.save()
         # It's possible to add an "Is this information correct?" prompt followed by another click,
@@ -64,7 +66,7 @@ def EXAMPLE_create_menu_item_view(request):
         # if request method isn't post, the form hasn't been filled out yet.
         # Theoretically this won't trigger in the final product
         form = MenuItemForm()
-        return render(request, "test.html", {"form": form})
+        return render(request, "test.html", {"form": form, "menuItems": menuItems})
 
 
 def get_items_by_category_view(request):
@@ -110,14 +112,3 @@ def wine_view(request):
 
 def menu_view(request):
     return render(request, "menu.html")
-
-
-"""
-NEEDED ON FRONT END: BUTTON TO RETURN STRING OF "CATEGORY" TO THIS FUNCTION 
-Categories are: Appetizer, Lunch, Dinner, Dessert, Wine
-This is EXACTLY as written, so make sure you account for that before calling the function 
-"""
-
-
-# def EXAMPLE_current_items_by_category_view(request):
-#     context = {"items": models.get_current_by_category("Wine")}

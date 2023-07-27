@@ -70,27 +70,38 @@
       </div>
     </div>
   </div>
-  ======= {% for type in types %}
-    
-     
-        <div class="overlay">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <h2 class="menu-section-title">{{ type }}</h2>
-         <hr>
+  {% comment %} <<<<<<< HEAD {% comment %} {% for item in items %} <h2>
+    {{item.subcat}} {{/h2}}
+    <p>Name: {{item.name}}</p>
+    {% endfor %} {% endcomment %} ======= {% for type in types %}
 
-          {% for item in items %} {% if item.item_type == type %}
 
-          <div class="menu-item">
-            <div class="menu-item-name">{{ item.name }}</div>
-            <div class="menu-item-price">{{ item.price }}</div>
-            <div class="menu-item-description">{{ item.description }}</div>
-          </div>
-          {% endif %} {% endfor %} {% endfor %}
-        </div>
-        {% endblock content%}
-      </div>
-    </div>
-  </h2>
-</div>
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <h2 class="menu-section-title">{{ type }}</h2>
+            <hr />
+
+
+            <div class="overlay">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <h2 class="menu-section-title">Type: {{ type }}</h2>
+                    <hr />
+
+                    {% for item in items %} {% if item.item_type == type %}
+
+                    <div class="menu-item">
+                      <div class="menu-item-name">{{ item.name }}</div>
+                      <div class="menu-item-price">{{ item.price }}</div>
+                      <div class="menu-item-description">{{ item.description }}</div>
+                    </div>
+                    {% endif %} {% endfor %} {% endfor %}
+                  </div>
+                  {% endblock content%}
+                </div>
+              </div>
+              </h2>
+            </div>
