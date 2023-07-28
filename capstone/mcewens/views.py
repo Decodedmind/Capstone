@@ -76,9 +76,7 @@ def EXAMPLE_create_menu_item_view(request):
         # if request method isn't post, the form hasn't been filled out yet.
         # Theoretically this won't trigger in the final product
         form = MenuItemForm()
-        return render(
-            request, "test.html", {"form": form, "menuItems": menuItems, "error": error}
-        )
+        return render(request, "test.html", {"form": form, "menuItems": menuItems})
 
 
 def get_items_by_category_view(request):
