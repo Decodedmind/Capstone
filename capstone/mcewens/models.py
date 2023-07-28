@@ -20,6 +20,7 @@ class MenuItem(models.Model):
         ("Appetizers", "Appetizers"),
         ("Soups/Salads", "Soups/Salads"),
         ("Entrees", "Entrees"),
+        ("Sandwiches", "Sandwiches"),
         ("Desserts", "Desserts"),
         ("Wine", "Wine"),
         ("Cocktails", "Cocktails"),
