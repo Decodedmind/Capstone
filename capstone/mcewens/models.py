@@ -18,7 +18,7 @@ class MenuItem(models.Model):
 
     TYPE_CHOICES = (
         ("Appetizers", "Appetizers"),
-        ("Soups/Salads", "Soups/Salads"),
+        ("Salads", "Salads"),
         ("Entrees", "Entrees"),
         ("Sandwiches", "Sandwiches"),
         ("Desserts", "Desserts"),
