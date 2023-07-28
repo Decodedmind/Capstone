@@ -31,32 +31,38 @@
   </div>
   <div class="container">
     <div class="row">
-      {% comment %}
-      <div class="col-xs-12 col-sm-6">
-        {% endcomment %}
-        <div class="menu-section">
-          <div class="overlay"></div>
-          <h2 class="menu-section-title"><strong>Lunch</strong></h2>
-          <hr />
-          <hr />
-          <hr />
-          <h2 class="menu-section-title">Soups/Salads</h2>
-          <hr />
-          <div class="menu-item">
-            <div class="menu-item-name">Dish Name</div>
-            <div class="menu-item-price">Price</div>
-            <div class="menu-item-description">Descriiption....</div>
-          </div>
-          <h2 class="menu-section-title">Burgers/Sandwiches</h2>
-          <hr />
-          <div class="menu-item">
-            <div class="menu-item-name">Dish Name</div>
-            <div class="menu-item-price">Price</div>
-            <div class="menu-item-description">Descriiption....</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{%endblock content%}
+      {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
+       
+
+
+
+   {% for type in types %}
+      <div class="container">
+        <div class="row"> 
+           <div class="overlay">
+          {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
+            <h2 class="menu-section-title">{{ type }}</h2>
+            
+
+
+            <div class="overlay">
+              <div class="container">
+                <div class="row">
+                  {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
+                   
+                    
+
+                    {% for item in items %} {% if item.item_type == type %}
+
+                    <div class="menu-item">
+                      <div class="menu-item-name">{{ item.name }}</div>
+                      <div class="menu-item-price">{{ item.price }}</div>
+                      <div class="menu-item-description">{{ item.description }}</div>
+                    </div>
+                    {% endif %} {% endfor %} {% endfor %}
+                  </div>
+                  {% endblock content%}
+                </div>
+              </div>
+              </h2>
+            </div>

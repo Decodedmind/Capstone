@@ -1,48 +1,68 @@
 {% extends 'index.html' %} {% block content%}
+
 <div id="restaurant-menu">
   <div class="section-title text-center center">
     <div class="overlay">
       <li>
-        <a href="{% url 'lunch' %}" class="page-scroll"><h2>Lunch</h2></a>
+        <a href="{% url 'lunch' %}" class="page-scroll">
+          <h2>Lunch</h2>
+        </a>
       </li>
       <hr />
       <li>
-        <a href="{% url 'dinner' %}" class="page-scroll"><h2>Dinner</h2></a>
+        <a href="{% url 'dinner' %}" class="page-scroll">
+          <h2>Dinner</h2>
+        </a>
       </li>
       <hr />
       <li>
-        <a href="{% url 'brunch' %}" class="page-scroll"><h2>Brunch</h2></a>
+        <a href="{% url 'brunch' %}" class="page-scroll">
+          <h2>Brunch</h2>
+        </a>
       </li>
       <hr />
       <li>
-        <a href="{% url 'wine' %}" class="page-scroll"><h2>Wine</h2></a>
+        <a href="{% url 'wine' %}" class="page-scroll">
+          <h2>Wine</h2>
+        </a>
       </li>
       <hr />
     </div>
   </div>
   <div class="container">
     <div class="row">
-      {% comment %}
-      <div class="col-xs-12 col-sm-6">
-        {% endcomment %}
-        <div class="menu-section">
-          <h2 class="menu-section-title">Wine</h2>
-          <hr />
-          <div class="menu-item">
-            <div class="menu-item-name">Wine Name</div>
-            <div class="menu-item-price">Price</div>
-            <div class="menu-item-description">Descriiption....</div>
-          </div>
-          <h2 class="menu-section-title">Cocktalils</h2>
-          <hr />
-          <div class="menu-item">
-            <div class="menu-item-name">Cocktalils Name</div>
-            <div class="menu-item-price">Price</div>
-            <div class="menu-item-description">Descriiption....</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{%endblock content%}
+      {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
+       
+
+
+
+   {% for type in types %}
+      <div class="container">
+        <div class="row"> 
+           <div class="overlay">
+          {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
+            <h2 class="menu-section-title">{{ type }}</h2>
+            
+
+
+            <div class="overlay">
+              <div class="container">
+                <div class="row">
+                  {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
+                   
+                    
+
+                    {% for item in items %} {% if item.item_type == type %}
+
+                    <div class="menu-item">
+                      <div class="menu-item-name">{{ item.name }}</div>
+                      <div class="menu-item-price">{{ item.price }}</div>
+                      <div class="menu-item-description">{{ item.description }}</div>
+                    </div>
+                    {% endif %} {% endfor %} {% endfor %}
+                  </div>
+                  {% endblock content%}
+                </div>
+              </div>
+              </h2>
+            </div>

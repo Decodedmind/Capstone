@@ -32,64 +32,25 @@
   <div class="container">
     <div class="row">
       {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
-        <div class="menu-section">
-          <div class="overlay"></div>
-          <h2 class="menu-section-title"><strong>Dinner</strong></h2>
-          <hr />
-          <hr />
-          <hr />
-          <h2 class="menu-section-title">Appetizers</h2>
-          <hr />
-          <div class="menu-item">
-            <div class="menu-item-name">Dish Name</div>
-            <div class="menu-item-price">Price</div>
-            <div class="menu-item-description">Descriiption....</div>
-          </div>
-          <h2 class="menu-section-title">Soups/Salads</h2>
-          <hr />
-          <div class="menu-item">
-            <div class="menu-item-name">Dish Name</div>
-            <div class="menu-item-price">Price</div>
-            <div class="menu-item-description">Descriiption....</div>
-          </div>
-          <h2 class="menu-section-title">Entrees</h2>
-          <hr />
-          <div class="menu-item">
-            <div class="menu-item-name">Dish Name</div>
-            <div class="menu-item-price">Price</div>
-            <div class="menu-item-description">Descriiption....</div>
-          </div>
-          <h2 class="menu-section-title">Deserts</h2>
-          <hr />
-          <div class="menu-item">
-            <div class="menu-item-name">Dish Name</div>
-            <div class="menu-item-price">Price</div>
-            <div class="menu-item-description">Descriiption....</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  {% comment %} <<<<<<< HEAD {% comment %} {% for item in items %} <h2>
-    {{item.subcat}} {{/h2}}
-    <p>Name: {{item.name}}</p>
-    {% endfor %} {% endcomment %} ======= {% for type in types %}
+       
 
 
-    <div class="overlay">
+
+   {% for type in types %}
       <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-6">
+        <div class="row"> 
+           <div class="overlay">
+          {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
             <h2 class="menu-section-title">{{ type }}</h2>
-            <hr />
+            
 
 
             <div class="overlay">
               <div class="container">
                 <div class="row">
-                  <div class="col-xs-12 col-sm-6">
-                    <h2 class="menu-section-title">Type: {{ type }}</h2>
-                    <hr />
+                  {% comment %} <div class="col-xs-12 col-sm-6"> {% endcomment %}
+                   
+                    
 
                     {% for item in items %} {% if item.item_type == type %}
 
