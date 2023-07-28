@@ -43,22 +43,32 @@ def EXAMPLE_create_menu_item_view(request):
         # Create object of form
         form = MenuItemForm(request.POST)
         # Generates an object from the form, but doesn't store it in the database
-        item = form.save(commit=False)
-        if form.is_valid():
-            # if form is valid - which is should be always - spit all the information back on the screen
-            # as an example
-            context = {
-                "id": item.id,
-                "name": item.name,
-                "price": item.price,
-                "description": item.description,
-                "category": item.category,
-                "current": item.current,
-                "item_type": item.item_type,
-                "form": form,
-                "menuItems": menuItems,
-            }
-            item.save()
+        # IF they create an error message, it resets the page without breaking everything
+        try:
+            item = form.save(commit=False)
+            if form.is_valid():
+                # if form is valid - which is should be always - spit all the information back on the screen
+                # as an example
+                form = MenuItemForm()
+                context = {
+                    "id": item.id,
+                    "name": item.name,
+                    "price": item.price,
+                    "description": item.description,
+                    "category": item.category,
+                    "current": item.current,
+                    "item_type": item.item_type,
+                    "form": form,
+                    "menuItems": menuItems,
+                }
+                item.save()
+        except:
+            # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate dataa
+            # Thus, this error message. Can rewrite it.
+            error = "Something went wrong! Perhaps a menu item with this name and category already exists?"
+            form = MenuItemForm()
+            context = {"error": error, "menuItems": menuItems, "form": form}
+
         # It's possible to add an "Is this information correct?" prompt followed by another click,
         # Then you would just do item.save() if they click yes, else return to the form page
         return render(request, "test.html", context)
@@ -66,7 +76,9 @@ def EXAMPLE_create_menu_item_view(request):
         # if request method isn't post, the form hasn't been filled out yet.
         # Theoretically this won't trigger in the final product
         form = MenuItemForm()
-        return render(request, "test.html", {"form": form, "menuItems": menuItems})
+        return render(
+            request, "test.html", {"form": form, "menuItems": menuItems, "error": error}
+        )
 
 
 def get_items_by_category_view(request):
