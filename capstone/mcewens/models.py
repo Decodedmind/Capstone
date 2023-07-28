@@ -1,9 +1,6 @@
 from django.db import models
 
 
-# FIX ISSUE: VALUE ERROR ON SAVE DUPLICATES
-
-
 # one model - menu item
 class MenuItem(models.Model):
     # Name - check
@@ -18,7 +15,6 @@ class MenuItem(models.Model):
     )
 
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=50)
-    # Possibility of making exclusive toggle for ease of use? If Lunch, not WIne? Research?
 
     TYPE_CHOICES = (
         ("Appetizers", "Appetizers"),
@@ -37,7 +33,6 @@ class MenuItem(models.Model):
 
     # Price - check
     price = models.FloatField()
-    # Price percentage option?
 
     # Current item? check
     current = models.IntegerField(default=1)
