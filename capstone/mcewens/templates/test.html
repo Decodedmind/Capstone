@@ -1,3 +1,5 @@
+{% load static %} 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Testing</title>
-  {% comment %} <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" /> {% endcomment %}
+  
   <style>
     /* CSS Reset */
     * {
@@ -106,7 +108,7 @@
     {% endfor %}
   </style>
 </head>
-
+<img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
 <body>
   <form action="" method="post">
     {% csrf_token %} {{form.as_p }} {% if form %}
