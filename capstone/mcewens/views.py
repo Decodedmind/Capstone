@@ -7,7 +7,7 @@ from .models import *
 
 
 def hello_world(request):
-    return HttpResponse("Hello, World!")
+    return HttpResponse("I am beautiful")
 
 
 def index(request):
