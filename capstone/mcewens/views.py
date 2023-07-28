@@ -63,7 +63,7 @@ def EXAMPLE_create_menu_item_view(request):
                 }
                 item.save()
         except:
-            # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate dataa
+            # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate data
             # Thus, this error message. Can rewrite it.
             error = "Something went wrong! Perhaps a menu item with this name and category already exists?"
             form = MenuItemForm()
