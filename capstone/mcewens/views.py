@@ -89,7 +89,7 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    TYPES = ("Appetizers", "Soups/Salads", "Entrees", "Desserts", "Wine", "Cocktails")
+    TYPES = ("Appetizers", "Salads", "Entrees", "Desserts", "Wine", "Cocktails")
     # get sub categories, pass in separately
     dinner_item = get_current_by_category("Dinner").values()
     return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})
@@ -100,21 +100,25 @@ def home_view(request):
 
 
 def lunch_view(request):
-    TYPES = ("Appetizers", "Soups/Salads", "Entrees", "Desserts", "Wine", "Cocktails")
+    TYPES = ("Salads", "Sandwiches", "Entrees")
     # get sub categories, pass in separately
     lunch_item = get_current_by_category("Lunch").values()
     return render(request, "lunch.html", {"types": TYPES, "items": lunch_item})
 
 
 def brunch_view(request):
-    TYPES = ("Appetizers", "Soups/Salads", "Entrees", "Desserts", "Wine", "Cocktails")
+    TYPES = (
+        "Salads",
+        "Burgers and Sandwiches",
+        "Entrees",
+    )
     # get sub categories, pass in separately
     brunch_item = get_current_by_category("Brunch").values()
     return render(request, "sundaybrunch.html", {"types": TYPES, "items": brunch_item})
 
 
 def wine_view(request):
-    TYPES = ("Appetizers", "Soups/Salads", "Entrees", "Desserts", "Wine", "Cocktails")
+    TYPES = ("Wine", "Cocktails")
     # get sub categories, pass in separately
     wine_item = get_current_by_category("Wine and Cocktails").values()
     return render(request, "wine.html", {"types": TYPES, "items": wine_item})
