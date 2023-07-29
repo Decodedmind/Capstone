@@ -5,6 +5,8 @@ from .forms import MenuItemForm
 from . import models
 from .models import *
 
+# research block styles - could fix issue with image on menu page
+
 
 def hello_world(request):
     return HttpResponse("I am beautiful")
