@@ -1,144 +1,159 @@
-{% load static %} 
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Testing</title>
-  
-  <style>
-    /* CSS Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <style>
+      /* CSS Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    /* Basic Styles for the Form */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #336273;
-    }
+      /* Basic Styles for the Form */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #336273;
+      }
 
-    form {
-      max-width: 400px;
-      margin: 30px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+      form {
+        max-width: 400px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-    input[type="submit"] {
-      display: block;
-      width: 100%;
-      margin-top: 15px;
-      padding: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+      input[type="submit"] {
+        display: block;
+        width: 100%;
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
 
-    /* Styles for the Data Display Section */
-    p {
-      margin-top: 30px;
-      padding: 10px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+      /* Styles for the Data Display Section */
+      p {
+        margin-top: 30px;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-    p.br {
-      display: none;
-    }
+      p.br {
+        display: none;
+      }
 
-    /* Styling for the Error Message */
-    p.error {
-      color: #e74c3c;
-      font-weight: bold;
-    }
+      /* Styling for the Error Message */
+      p.error {
+        color: #e74c3c;
+        font-weight: bold;
+      }
 
-    /* Additional Styling for Specific Elements */
-    h2.menu-section-title {
-      color: #007bff;
-    }
+      /* Additional Styling for Specific Elements */
+      h2.menu-section-title {
+        color: #007bff;
+      }
 
-    p.span {
-      color: #007bff;
-    }
+      p.span {
+        color: #007bff;
+      }
 
-    /* Menu Item Styling */
-    {% for menuItem in menuItems %}
+      /* Menu Item Styling */
+      ul.menu-items-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-    div.menu-item-{{ menuItem.id }}
+      li.menu-item {
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-      {
-      margin: 20px auto;
-      padding: 10px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+      li.menu-item p {
+        margin-bottom: 5px;
+      }
 
-    div.menu-item- {{menuItem.id}}
+      li.menu-item p:last-child {
+        margin-bottom: 0; /* Remove the bottom margin for the last paragraph to avoid extra space */
+      }
 
-    p {
-      margin-bottom: 5px;
-    }
+      /* Styling for the "Current: Yes!" text */
+      li.menu-item p.current-yes {
+        color: #00a700;
+        font-weight: bold;
+      }
 
-    form.menu-item- {{ menuItem.id}}
-    {
-      display: inline;
-      margin-left: 10px;
-    }
+      /* Styling for the "Current: No!" text */
+      li.menu-item p.current-no {
+        color: #e74c3c;
+        font-weight: bold;
+      }
+    </style>
+  </head>
 
-    form.menu-item- {{ menuItem.id}}
+  <body>
+    <img
+      src="{% static 'img/logo_360.png' %}"
+      class="img-responsive"
+      alt="Logo"
+    />
 
-    input[type="submit"] {
-      padding: 5px 10px;
-      background-color: #e74c3c;
-    }
+    <form action="" method="post">
+      {% csrf_token %} {{ form.as_p }} {% if form %}
+      <input type="submit" value="Submit" />
+      {% endif %}
+    </form>
 
-    {% endfor %}
-  </style>
-</head>
-<img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
-<body>
-  <form action="" method="post">
-    {% csrf_token %} {{form.as_p }} {% if form %}
-    <input type="submit" value="Submit" />
+    {% if error is none and name %}
+    <div class="submitted-menu-item">
+      <p><strong>Name:</strong> {{ name }}</p>
+      <p><strong>Price:</strong> {{ price }}</p>
+      <p><strong>Description:</strong> {{ description }}</p>
+      <p><strong>Category:</strong> {{ category }}</p>
+      {% if current is 1 %}
+      <p class="current-yes"><strong>Current:</strong> Yes!</p>
+      {% else %}
+      <p class="current-no"><strong>Current:</strong> No!</p>
+      {% endif %}
+      <p><strong>Type:</strong> {{ item_type }}</p>
+    </div>
+    {% else %}
+    <p class="error">{{ error }}</p>
     {% endif %}
-  </form>
 
-  {% if error is none and name %}
-  <p>
-    Name: {{ name }} <br />
-    Price: {{ price }} <br />
-    Description: {{ description }} <br />
-    Category: {{ category }}<br />
-    {%if current is 1 %} Current: Yes!<br />
-    {% else %} Current: No!<br />
-    {% endif %} Type: {{ item_type }}<br />
-  </p>
-  {% else %}
-  <p class="error">{{ error }}</p>
-  {% endif %}
-  {% for menuItem in menuItems %}
-  <div class="menu-item-{{menuItem.id}}">
-    <p>Name: {{menuItem.name}}</p>
-    <p>Description: {{menuItem.description}}</p>
-    <p>Price: {{menuItem.price}}</p>
-    <p>Category: {{ menuItem.category }}</p>
-    {%if menuItem.current is 1 %}<p>Current: Yes!</p>
-    {% else %}<p> Current: No!</p>
-    {% endif %}<p> Type: {{ menuItem.item_type }}</p>
-    {% endfor %}
-</body>
-
+    <ul class="menu-items-list">
+      {% for menuItem in menuItems %}
+      <li class="menu-item">
+        <p><strong>Name:</strong> {{ menuItem.name }}</p>
+        <p><strong>Description:</strong> {{ menuItem.description }}</p>
+        <p><strong>Price:</strong> {{ menuItem.price }}</p>
+        <p><strong>Category:</strong> {{ menuItem.category }}</p>
+        {% if menuItem.current is 1 %}
+        <p class="current-yes"><strong>Current:</strong> Yes!</p>
+        {% else %}
+        <p class="current-no"><strong>Current:</strong> No!</p>
+        {% endif %}
+        <p><strong>Type:</strong> {{ menuItem.item_type }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
 </html>
