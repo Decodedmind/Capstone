@@ -5,6 +5,8 @@ from .forms import MenuItemForm
 from . import models
 from .models import *
 
+# research block styles - could fix issue with image on menu page
+
 
 def hello_world(request):
     return HttpResponse("I am beautiful")
@@ -107,11 +109,7 @@ def lunch_view(request):
 
 
 def brunch_view(request):
-    TYPES = (
-        "Salads",
-        "Burgers and Sandwiches",
-        "Entrees",
-    )
+    TYPES = ("Salads", "Sandwiches", "Entrees")
     # get sub categories, pass in separately
     brunch_item = get_current_by_category("Brunch").values()
     return render(request, "sundaybrunch.html", {"types": TYPES, "items": brunch_item})
