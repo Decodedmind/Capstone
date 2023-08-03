@@ -30,7 +30,7 @@ class MenuItem(models.Model):
     # Types of item for the sake of menu
 
     # Description - check
-    description = models.CharField(max_length=200, blank=True)
+    description = models.TextField(max_length=200, blank=True)
 
     # Price - check
     price = models.FloatField()
@@ -70,6 +70,11 @@ def get_menu_items_by_name(name):
 
 def get_current_by_category(cat):
     return MenuItem.objects.filter(category=cat, current=1)
+
+
+#Conner: implement try catch on this function
+def get_menu_item_by_id(id):
+    return MenuItem.objects.get(id=id)
 
 
 def set_current_status(item_id, status):
@@ -123,9 +128,9 @@ def set_menu_item_price(item_id, new_p):
         raise ValueError("Item not found in database!")
 
 
-def delete_menu_item(name):
+def delete_menu_item(id):
     try:
-        item = get_menu_items_by_name(name)
+        item = get_menu_item_by_id(id)
         item.delete()
         return "Deleted!"
     except:

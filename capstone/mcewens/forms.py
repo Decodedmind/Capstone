@@ -13,3 +13,6 @@ class MenuItemForm(forms.ModelForm):
             "item_type",
         ]
         exclude = ["current"]
+
+# class deleteForm(forms.ModelForm):
+#     itemId = forms.IntegerField(required=True)
