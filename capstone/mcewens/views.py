@@ -17,10 +17,9 @@ def index(request):
 
 
 def deleteMenuItem(request, id):
-    
     menuItemId = id
     if request.method == "POST":
-        if (request.POST.get("yesno") == "YES"):
+        if request.POST.get("yesno") == "YES":
             delete_menu_item(menuItemId)
             return redirect("restaurant_admin")
         else:
@@ -28,9 +27,10 @@ def deleteMenuItem(request, id):
 
     return render(request, "delete.html")
 
+
 def editMenuItem(request, id):
     menuItemId = id
-    menuItem = MenuItem.objects.get(id = menuItemId)
+    menuItem = MenuItem.objects.get(id=menuItemId)
     form = MenuItemForm(instance=menuItem)
 
     if request.method == "POST":
@@ -38,7 +38,7 @@ def editMenuItem(request, id):
         if form.is_valid():
             form.save()
             return redirect("restaurant_admin")
-        
+
     context = {"form": form}
     return render(request, "edit.html", context)
 
@@ -110,7 +110,11 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    TYPES = ("Appetizers", "Salads", "Entrees", "Desserts", "Wine", "Cocktails")
+    TYPES = (
+        "Appetizers",
+        "Salads",
+        "Entrees",
+    )
     # get sub categories, pass in separately
     dinner_item = get_current_by_category("Dinner").values()
     return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})

@@ -106,12 +106,13 @@
       <a href="{%url 'edit' menuItem.id%}"
         ><button type="button">Edit</button></a
       >
-      <a href="{%url 'delete' menuItem.id %}"
-        ><button type="button">Delete</button></a
-      >
+      <a href="{% url 'delete' menuItem.id %}" class="menu-item-{{menuItem.id}}">
+        <button type="button">Delete</button>
+      </a>
+      
 
       {% comment %}
-      <form class="menu-item-{{menuItem.id}}" action="delete" method="POST">
+      <form " action="delete" method="POST">
         {% csrf_token %}
         <input type="submit" name="delete" value="Delete" />
       </form>
