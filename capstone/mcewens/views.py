@@ -20,7 +20,7 @@ def delete_menu_item(request, id):
     menuItemId = id
     if request.method == "POST":
         if request.POST.get("yesno") == "YES":
-            delete_menu_item(menuItemId)
+            delete_menu_item_by_id(menuItemId)
             return redirect("restaurant_admin")
         else:
             return redirect("restaurant_admin")
