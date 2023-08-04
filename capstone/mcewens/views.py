@@ -82,7 +82,12 @@ def restaurant_admin(request):
                     "form": form,
                     "menuItems": menuItems,
                 }
-                item.save()
+                "IS this correct?"
+                # if yes:
+                #     item.save()
+                #     redirect to same restaurant_admin
+                # else:
+                #     redirect to same without save
         except:
             # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate data
             # Thus, this error message. Can rewrite it.
