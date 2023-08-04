@@ -80,8 +80,9 @@ def restaurant_admin(request):
                     "current": item.current,
                     "item_type": item.item_type,
                     "form": form,
-                    "menuItems": menu_items,
+                    "menu_items": menu_items,
                 }
+                item.save()
                 "IS this correct?"
                 # if yes:
                 #     item.save()
@@ -92,7 +93,7 @@ def restaurant_admin(request):
             # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate data
             # Thus, this error message. Can rewrite it.
             error = "Something went wrong! Perhaps a menu item with this name and category already exists?"
-            form = MenuItemForm()
+            # form = MenuItemForm()
             context = {"error": error, "menu_items": menu_items, "form": form}
 
         # It's possible to add an "Is this information correct?" prompt followed by another click,
