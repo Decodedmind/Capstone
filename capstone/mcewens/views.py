@@ -8,8 +8,12 @@ from .models import *
 # research block styles - could fix issue with image on menu page
 
 
-def hello_world(request):
-    return HttpResponse("I am beautiful")
+def home_view(request):
+    return render(request, "home.html")
+
+
+def menu_view(request):
+    return render(request, "menu.html")
 
 
 def index(request):
@@ -124,10 +128,6 @@ def dinner_view(request):
     return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})
 
 
-def home_view(request):
-    return render(request, "home.html")
-
-
 def lunch_view(request):
     TYPES = ("Salads", "Sandwiches", "Entrees")
     # get sub categories, pass in separately
@@ -147,7 +147,3 @@ def wine_view(request):
     # get sub categories, pass in separately
     wine_item = get_current_by_category("Wine and Cocktails").values()
     return render(request, "wine.html", {"types": TYPES, "items": wine_item})
-
-
-def menu_view(request):
-    return render(request, "menu.html")
