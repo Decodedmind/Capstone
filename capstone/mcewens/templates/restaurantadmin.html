@@ -1,122 +1,187 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu Items</title>
-    <style>
-      /* CSS Reset */
-      * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Items</title>
+  <style>
+    /* CSS Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #336273;
+    }
+
+    /* Form Styling */
+    div {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    form table {
+      width: 100%;
+      margin-top: 15px;
+      border-collapse: collapse;
+    }
+
+    form table td {
+      padding: 5px;
+    }
+
+    form input[type="submit"] {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Menu Item Styling */
+      {
+      % for menuItem in menuItems %
+    }
+
+    div.menu-item- {
+        {
+        menuItem.id
       }
+    }
 
-      body {
-          font-family: Arial, sans-serif;
-          background-color: #336273;
+      {
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    div.menu-item- {
+        {
+        menuItem.id
       }
+    }
 
-      /* Form Styling */
-      div {
-          max-width: 500px;
-          margin: 20px auto;
-          padding: 20px;
-          background-color: #fff;
-          border-radius: 5px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    p {
+      margin-bottom: 5px;
+    }
+
+    form.menu-item- {
+        {
+        menuItem.id
       }
+    }
 
-      form table {
-          width: 100%;
-          margin-top: 15px;
-          border-collapse: collapse;
+      {
+      display: inline;
+      margin-left: 10px;
+    }
+
+    form.menu-item- {
+        {
+        menuItem.id
       }
+    }
 
-      form table td {
-          padding: 5px;
-      }
+    input[type="submit"] {
+      padding: 5px 10px;
+      background-color: #e74c3c;
+    }
 
-      form input[type="submit"] {
-          display: block;
-          margin: 20px auto;
-          padding: 10px 20px;
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-      }
+      {
+      % endfor %
+    }
+  </style>
+</head>
 
-      /* Menu Item Styling */
-      {% for menuItem in menuItems %}
-      div.menu-item-{{menuItem.id}} {
-          margin: 20px auto;
-          padding: 10px;
-          background-color: #fff;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
+<body>
+  <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
 
-      div.menu-item-{{menuItem.id}} p {
-          margin-bottom: 5px;
-      }
+  <div>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>{{form.name.label}}</td>
+          <td>{{form.name}}</td>
+        </tr>
+        <tr>
+          <td>{{form.description.label}}</td>
+          <td>{{form.description}}</td>
+        </tr>
+        <tr>
+          <td>{{form.price.label}} $</td>
+          <td>{{form.price}}</td>
+        </tr>
+        <tr>
+          <td>{{form.category.label}}</td>
+          <td>{{form.category}}</td>
+        </tr>
+        <tr>
+          <td>{{form.item_type.label}}</td>
+          <td>{{form.item_type}}</td>
+        </tr>
+      </table>
+      <input type="submit" value="Add Item" />
+    </form>
+  </div>
 
-      form.menu-item-{{menuItem.id}} {
-          display: inline;
-          margin-left: 10px;
-      }
+  {% if error is none and name %}
+  <div class="submitted-menu-item">
+    <p><strong>Your item has been added!</p>
+    <p><strong>Name:</strong> {{ name }}</p>
+    <p><strong>Price:</strong> ${{ price }}</p>
+    <p><strong>Description:</strong> {{ description }}</p>
+    <p><strong>Category:</strong> {{ category }}</p>
+    {% if current is 1 %}
+    <p class="current-yes"><strong>Current:</strong> Yes!</p>
+    {% else %}
+    <p class="current-no"><strong>Current:</strong> No!</p>
+    {% endif %}
+    <p><strong>Type:</strong> {{ item_type }}</p>
+  </div>
+  {% else %}
+  <p class="error">{{ error }}</p>
+  {% endif %}
 
-      form.menu-item-{{menuItem.id}} input[type="submit"] {
-          padding: 5px 10px;
-          background-color: #e74c3c;
-      }
-      {% endfor %}
-    </style>
-  </head>
 
-  <body>
-    <div>
-      <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-          <tr>
-            <td>{{form.name.label}}</td>
-            <td>{{form.name}}</td>
-          </tr>
-          <tr>
-            <td>{{form.description.label}}</td>
-            <td>{{form.description}}</td>
-          </tr>
-          <tr>
-            <td>{{form.price.label}}</td>
-            <td>{{form.price}}</td>
-          </tr>
-        </table>
-        <input type="submit" value="Add Item" />
-      </form>
-    </div>
+  {% for menuItem in menuItems %}
+  <div class="menu-item-{{menuItem.id}}">
+    <p>Name: {{menuItem.name}}</p>
+    <p>Description: {{menuItem.description}}</p>
+    <p>Price: ${{menuItem.price}}</p>
+    <p><strong>Category:</strong> {{ menuItem.category }}</p>
+    {% if menuItem.current is 1 %}
+    <p class="current-yes"><strong>Current:</strong> Yes!</p>
+    {% else %}
+    <p class="current-no"><strong>Current:</strong> No!</p>
+    {% endif %}
+    <p><strong>Type:</strong> {{ menuItem.item_type }}</p>
+    <a href="{%url 'edit' menuItem.id%}"><button type="button">Edit</button></a>
+    <a href="{%url 'delete' menuItem.id %}"><button type="button">Delete</button></a>
 
-    {% for menuItem in menuItems %}
-    <div class="menu-item-{{menuItem.id}}">
-      <p>Name: {{menuItem.name}}</p>
-      <p>Description: {{menuItem.description}}</p>
-      <p>Price: {{menuItem.price}}</p>
-      <a href="{%url 'edit' menuItem.id%}"
-        ><button type="button">Edit</button></a
-      >
-      <a href="{%url 'delete' menuItem.id %}"
-        ><button type="button">Delete</button></a
-      >
+    {% comment %}
+    <form class="menu-item-{{menuItem.id}}" action="delete" method="POST">
+      {% csrf_token %}
+      <input type="submit" name="delete" value="Delete" />
+    </form>
+    {% endcomment %}
+  </div>
+  {% endfor %}
+</body>
 
-      {% comment %}
-      <form class="menu-item-{{menuItem.id}}" action="delete" method="POST">
-        {% csrf_token %}
-        <input type="submit" name="delete" value="Delete" />
-      </form>
-      {% endcomment %}
-    </div>
-    {% endfor %}
-  </body>
 </html>

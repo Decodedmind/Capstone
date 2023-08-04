@@ -17,10 +17,9 @@ def index(request):
 
 
 def deleteMenuItem(request, id):
-    
     menuItemId = id
     if request.method == "POST":
-        if (request.POST.get("yesno") == "YES"):
+        if request.POST.get("yesno") == "YES":
             delete_menu_item(menuItemId)
             return redirect("restaurant_admin")
         else:
@@ -28,9 +27,10 @@ def deleteMenuItem(request, id):
 
     return render(request, "delete.html")
 
+
 def editMenuItem(request, id):
     menuItemId = id
-    menuItem = MenuItem.objects.get(id = menuItemId)
+    menuItem = MenuItem.objects.get(id=menuItemId)
     form = MenuItemForm(instance=menuItem)
 
     if request.method == "POST":
@@ -38,27 +38,27 @@ def editMenuItem(request, id):
         if form.is_valid():
             form.save()
             return redirect("restaurant_admin")
-        
+
     context = {"form": form}
     return render(request, "edit.html", context)
 
 
-def restaurant_admin(request):
-    form = MenuItemForm()
-    menuItems = MenuItem.objects.all()
-    if request.method == "POST":
-        form = MenuItemForm(request.POST)
-        name = request.POST.get("name")
-        description = request.POST.get("description")
-        price = request.POST.get("price")
-        create_menu_item(name, description, price)
+# def restaurant_admin(request):
+#     form = MenuItemForm()
+#     menuItems = MenuItem.objects.all()
+#     if request.method == "POST":
+#         form = MenuItemForm(request.POST)
+#         name = request.POST.get("name")
+#         description = request.POST.get("description")
+#         price = request.POST.get("price")
+#         create_menu_item(name, description, price)
 
-    context = {"form": form, "menuItems": menuItems}
-    return render(request, "restaurantadmin.html", context)
+#     context = {"form": form, "menuItems": menuItems}
+#     return render(request, "restaurantadmin.html", context)
 
 
 # @login_required
-def EXAMPLE_create_menu_item_view(request):
+def restaurant_admin(request):
     menuItems = MenuItem.objects.all()
     if request.method == "POST":
         # Create object of form
@@ -92,12 +92,14 @@ def EXAMPLE_create_menu_item_view(request):
 
         # It's possible to add an "Is this information correct?" prompt followed by another click,
         # Then you would just do item.save() if they click yes, else return to the form page
-        return render(request, "test.html", context)
+        return render(request, "restaurantadmin.html", context)
     else:
         # if request method isn't post, the form hasn't been filled out yet.
         # Theoretically this won't trigger in the final product
         form = MenuItemForm()
-        return render(request, "test.html", {"form": form, "menuItems": menuItems})
+        return render(
+            request, "restaurantadmin.html", {"form": form, "menuItems": menuItems}
+        )
 
 
 def get_items_by_category_view(request):

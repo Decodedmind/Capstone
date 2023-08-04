@@ -6,7 +6,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("Mcewens/", hello_world, name="hello_world"),
     path("", home_view, name="home"),
-    path("test/", EXAMPLE_create_menu_item_view, name="test"),
     path("restaurant_admin/", restaurant_admin, name="restaurant_admin"),
     path("restaurant_admin/delete/<id>", deleteMenuItem, name="delete"),
     path("menu/", menu_view, name="menu"),
