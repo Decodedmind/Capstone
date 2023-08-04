@@ -16,12 +16,31 @@ def index(request):
     return render(request, "index.html")
 
 
-def deleteMenuItem(request, name):
+def deleteMenuItem(request, id):
+    
+    menuItemId = id
     if request.method == "POST":
-        id = request.POST["delete"]
-        print(id)
-        delete_menu_item(id)
-    return redirect("restaurant_admin")
+        if (request.POST.get("yesno") == "YES"):
+            delete_menu_item(menuItemId)
+            return redirect("restaurant_admin")
+        else:
+            return redirect("restaurant_admin")
+
+    return render(request, "delete.html")
+
+def editMenuItem(request, id):
+    menuItemId = id
+    menuItem = MenuItem.objects.get(id = menuItemId)
+    form = MenuItemForm(instance=menuItem)
+
+    if request.method == "POST":
+        form = MenuItemForm(request.POST, instance=menuItem)
+        if form.is_valid():
+            form.save()
+            return redirect("restaurant_admin")
+        
+    context = {"form": form}
+    return render(request, "edit.html", context)
 
 
 def restaurant_admin(request):

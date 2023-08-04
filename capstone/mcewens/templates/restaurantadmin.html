@@ -103,11 +103,19 @@
       <p>Name: {{menuItem.name}}</p>
       <p>Description: {{menuItem.description}}</p>
       <p>Price: {{menuItem.price}}</p>
+      <a href="{%url 'edit' menuItem.id%}"
+        ><button type="button">Edit</button></a
+      >
+      <a href="{%url 'delete' menuItem.id %}"
+        ><button type="button">Delete</button></a
+      >
 
-      <form class="menu-item-{{menuItem.id}}" action="" method="POST">
+      {% comment %}
+      <form class="menu-item-{{menuItem.id}}" action="delete" method="POST">
         {% csrf_token %}
         <input type="submit" name="delete" value="Delete" />
       </form>
+      {% endcomment %}
     </div>
     {% endfor %}
   </body>
