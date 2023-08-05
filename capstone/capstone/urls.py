@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from mcewens.views import *
 
 urlpatterns = [
@@ -15,4 +15,6 @@ urlpatterns = [
     path("brunch/", brunch_view, name="brunch"),
     path("wine/", wine_view, name="wine"),
     path("reservation/", reservation_view, name="reservation"),
+    path("accounts/", include("django.contrib.auth.urls")),
+    #path("accounts/profile/", profile_redirect, name="profile")
 ]
