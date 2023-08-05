@@ -52,6 +52,10 @@ a {
 
 }
 
+hr.table{
+	border-color: #DB5C32;
+}
+
 .phone-link {
     color: rgb(255, 255, 255);
     
@@ -158,7 +162,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	margin-bottom: 70px;
 }
 .section-title .overlay {
-	padding: 80px 0;
+	padding: 150px 0;
 	background: rgba(0, 0, 0, 0.7);
 }
 .section-title p {
@@ -193,7 +197,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	display: table;
 	width: 100%;
 	height: 100vh;
-	background: url(../img/patrons3.jpg) no-repeat center center;
+	background: url(../img/patrons4.jpg) no-repeat center center;
 	background-color: #e5e5e5;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -257,16 +261,21 @@ header .intro-text {
 	margin: 15px 0 30px;
 }
 /* Menu Section */
-#restaurant-menu {
-	padding:60px ;
-}
+
 #restaurant-menu .section-title {
 	background: #444 url(../img/farmer.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
+
+
+
 #restaurant-menu .section-title h2 {
 	color: #fff;
 }
+/* restaurant dinner part  */
+
+
+
 #restaurant-menu img {
 	width: 300px;
 	box-shadow: 15px 0 #DB5C32;
@@ -309,6 +318,112 @@ header .intro-text {
 	color: #555;
 	margin-top: -26px;
 }
+
+/* restaurant dinner part  */
+#restaurant-menu-dinner .section-title {
+	background: #444 url(../img/osso.jpg) center center no-repeat fixed;
+	background-size: cover;
+}
+
+#restaurant-menu-dinner .section-title h2 {
+	color: #fff;
+}
+
+#restaurant-menu-dinner img {
+	width: 300px;
+	box-shadow: 15px 0 #DB5C32;
+}
+#restaurant-menu-dinner h3 {
+	padding: 10px 0;
+	text-transform: uppercase;
+}
+#restaurant-menu-dinner .menu-section hr {
+	margin: 0 auto;
+}
+#restaurant-menu-dinner .menu-section {
+	margin: 0 20px 80px;
+}
+#restaurant-menu-dinner .menu-section-title {
+	font-size: 26px;
+	display: block;
+	font-weight: 500;
+	color: #444;
+	margin: 60px 0;
+	text-align: center;
+}
+#restaurant-menu-dinner .menu-item {
+	margin: 35px 0;
+	font-size: 18px;
+}
+#restaurant-menu-dinner .menu-item-name {
+	font-weight: 600;
+	font-size: 17px;
+	color: #555;
+	border-bottom: 2px dotted rgb(213, 213, 213);
+}
+#restaurant-menu-dinner .menu-item-description {
+	font-style: italic;
+	font-size: 15px;
+}
+#restaurant-menu-dinner .menu-item-price {
+	float: right;
+	font-weight: 600;
+	color: #555;
+	margin-top: -26px;
+}
+/* restaurant brunch  */
+#restaurant-menu-brunch .section-title {
+	background: #444 url(../img/.jpg) center center no-repeat fixed;
+	background-size: cover;
+}
+
+#restaurant-menu-bruch .section-title h2 {
+	color: #fff;
+}
+
+#restaurant-menu-bruch img {
+	width: 300px;
+	box-shadow: 15px 0 #DB5C32;
+}
+#restaurant-menu-bruch h3 {
+	padding: 10px 0;
+	text-transform: uppercase;
+}
+#restaurant-menu-bruch .menu-section hr {
+	margin: 0 auto;
+}
+#restaurant-menu-bruch .menu-section {
+	margin: 0 20px 80px;
+}
+#restaurant-menu-bruch .menu-section-title {
+	font-size: 26px;
+	display: block;
+	font-weight: 500;
+	color: #444;
+	margin: 60px 0;
+	text-align: center;
+}
+#restaurant-menu-bruch .menu-item {
+	margin: 35px 0;
+	font-size: 18px;
+}
+#restaurant-menu-bruch .menu-item-name {
+	font-weight: 600;
+	font-size: 17px;
+	color: #555;
+	border-bottom: 2px dotted rgb(213, 213, 213);
+}
+#restaurant-menu-bruch .menu-item-description {
+	font-style: italic;
+	font-size: 15px;
+}
+#restaurant-menu-bruch .menu-item-price {
+	float: right;
+	font-weight: 600;
+	color: #555;
+	margin-top: -26px;
+}
+
 /* Portfolio Section */
 #portfolio {
 	padding: 0 0 120px 0;
@@ -431,59 +546,7 @@ ol.type li a:hover {
 .hover-bg:hover .hover-text {
 	opacity: 1;
 }
-/* Team Section */
-#team {
-	color: #fff;
-	background: #444 url(../img/team.jpg) center top no-repeat fixed;
-	background-size: cover;
-}
-#team .overlay {
-	padding: 120px 0 80px 0;
-	background: rgba(0, 0, 0, 0.6);
-}
-#team h2, #team p {
-	color: #fff;
-}
-#team hr {
-	background: #DB5C32;
-}
 
-
-#team h3 {
-	color: #fff;
-	font-weight: 400;
-	font-size: 20px;
-	margin: 5px 0;
-}
-#team img {
-	width: 280px;
-}
-#team .thumbnail {
-	background: transparent;
-	border: 0;
-}
-#team .thumbnail .team-img {
-	display: inline-block;
-	position: relative;
-}
-#team .thumbnail .team-img:before {
-	display: block;
-	content: '';
-	position: absolute;
-	top: 8px;
-	right: 8px;
-	bottom: 8px;
-	left: 8px;
-	border: 1px solid rgba(255, 255, 255, 0.2);
-}
-#team .thumbnail .caption {
-	padding-top: 10px;
-}
-#team .thumbnail .caption p {
-	color: rgba(255,255,255,0.7);
-	padding: 0 10px;
-	font-size: 15px;
-}
 /* Call Reservation Section */
 #call-reservation {
 	padding: 90px 0;
