@@ -25,10 +25,9 @@ def reservation_view(request):
 
 
 def delete_menu_item(request, id):
-    menuItemId = id
     if request.method == "POST":
         if request.POST.get("yesno") == "YES":
-            delete_menu_item_by_id(menuItemId)
+            delete_menu_item_by_id(id)
             return redirect("restaurant_admin")
         else:
             return redirect("restaurant_admin")
@@ -37,66 +36,63 @@ def delete_menu_item(request, id):
 
 
 def edit_menu_item(request, id):
-    menuItemId = id
-    menuItem = MenuItem.objects.get(id=menuItemId)
-    form = MenuUpdateForm(instance=menuItem)
+    menu_item = MenuItem.objects.get(id=id)
+    form = MenuUpdateForm(instance=menu_item)
 
     if request.method == "POST":
-        form = MenuUpdateForm(request.POST, instance=menuItem)
+        form = MenuUpdateForm(request.POST, instance=menu_item)
         if form.is_valid():
             form.save()
             return redirect("restaurant_admin")
 
-    context = {"form": form}
+    context = {"form": form, "mode": "Edit"}
     return render(request, "edit.html", context)
 
 
-# def restaurant_admin(request):
-#     form = MenuItemForm()
-#     menuItems = MenuItem.objects.all()
-#     if request.method == "POST":
-#         form = MenuItemForm(request.POST)
-#         name = request.POST.get("name")
-#         description = request.POST.get("description")
-#         price = request.POST.get("price")
-#         create_menu_item(name, description, price)
+def confirm_menu_item_view(request):
+    item = request.session.get("item_input", None)
+    new_item = {
+        "name": item.get("name"),
+        "description": item.get("description"),
+        "category": item.get("category"),
+        "item_type": item.get("item_type"),
+        "price": item.get("price"),
+    }
+    form = MenuItemForm(request.POST or new_item)
+    context = {"form": form, "mode": "Create"}
+    if request.method == "POST":
+        form = MenuItemForm(request.POST)
+        try:
+            form.save()
+            return redirect("restaurant_admin")
+        except:
+            context[
+                "error"
+            ] = "Something went wrong! Perhaps a menu item with this name and category already exists?"
 
-#     context = {"form": form, "menuItems": menuItems}
-#     return render(request, "restaurantadmin.html", context)
+    return render(request, "edit.html", context)
 
 
 @login_required
 def restaurant_admin(request):
     menu_items = MenuItem.objects.all()
     if request.method == "POST":
-        # Create object of form
         form = MenuItemForm(request.POST)
+        if form.is_valid():
+            request.session["item_input"] = form.cleaned_data
+            return redirect("confirm")
+        # Create object of form
         # Generates an object from the form, but doesn't store it in the database
         # IF they create an error message, it resets the page without breaking everything
         try:
             item = form.save(commit=False)
-            if form.is_valid():
-                # if form is valid - which is should be always - spit all the information back on the screen
-                # as an example
-                form = MenuItemForm()
-                context = {
-                    "id": item.id,
-                    "name": item.name,
-                    "price": item.price,
-                    "description": item.description,
-                    "category": item.category,
-                    "current": item.current,
-                    "item_type": item.item_type,
-                    "form": form,
-                    "menu_items": menu_items,
-                }
-                item.save()
-                "IS this correct?"
-                # if yes:
-                #     item.save()
-                #     redirect to same restaurant_admin
-                # else:
-                #     redirect to same without save
+            return redirect("confirm", item)
+            # "IS this correct?"
+            # if yes:
+            #     item.save()
+            #     redirect to same restaurant_admin
+            # else:
+            #     redirect to same without save
         except:
             # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate data
             # Thus, this error message. Can rewrite it.
@@ -108,8 +104,6 @@ def restaurant_admin(request):
         # Then you would just do item.save() if they click yes, else return to the form page
         return render(request, "restaurant_admin.html", context)
     else:
-        # if request method isn't post, the form hasn't been filled out yet.
-        # Theoretically this won't trigger in the final product
         form = MenuItemForm()
         return render(
             request, "restaurant_admin.html", {"form": form, "menu_items": menu_items}

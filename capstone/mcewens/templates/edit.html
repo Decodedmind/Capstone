@@ -1,4 +1,4 @@
-<h2>edit this item</h2>
+<h2>{{mode}} this item?</h2>
 
 <form method="POST" action="">
   {% csrf_token %}
@@ -9,7 +9,11 @@
     </tr>
     <tr>
       <td>{{form.description.label}}</td>
+      {% if not form.description %}
+      <td>(No description entered)</td>
+      {% else %}
       <td>{{form.description}}</td>
+      {% endif %}
     </tr>
     <tr>
       <td>{{form.price.label}}</td>
@@ -25,12 +29,11 @@
     </tr>
     <tr>
       <td>{{form.current.label}}</td>
-      {% if form.current == 1 %}
-      <td>Item is currently on menu. {{form.current}} </td>
-      {% else %}
-      <td>Item is NOT currently on menu. {{form.current}}</td>
-      {% endif %}
+      <td>{{form.current}}</td>
     </tr>
   </table>
-  <input type="submit" value="Edit Item" />
+  <input type="submit" value="{{mode}} Item" />
+  <a href="{%url 'restaurant_admin'%}"><button type="button">Cancel</button></a>
+  <p>{{error}}</p>
+
 </form>
