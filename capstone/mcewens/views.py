@@ -155,3 +155,6 @@ def wine_view(request):
     # get sub categories, pass in separately
     wine_item = get_current_by_category("Wine and Cocktails").values()
     return render(request, "wine.html", {"types": TYPES, "items": wine_item})
+
+def profile_redirect(request):
+    return redirect("restaurant_admin")
