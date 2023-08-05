@@ -1,26 +1,34 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from .forms import MenuItemForm
+from .forms import MenuItemForm, MenuUpdateForm
 from . import models
 from .models import *
 
 # research block styles - could fix issue with image on menu page
 
 
-def hello_world(request):
-    return HttpResponse("I am beautiful")
+def home_view(request):
+    return render(request, "home.html")
+
+
+def menu_view(request):
+    return render(request, "menu.html")
 
 
 def index(request):
     return render(request, "index.html")
 
 
-def deleteMenuItem(request, id):
+def reservation_view(request):
+    return render(request, "reservation.html")
+
+
+def delete_menu_item(request, id):
     menuItemId = id
     if request.method == "POST":
         if request.POST.get("yesno") == "YES":
-            delete_menu_item(menuItemId)
+            delete_menu_item_by_id(menuItemId)
             return redirect("restaurant_admin")
         else:
             return redirect("restaurant_admin")
@@ -28,13 +36,13 @@ def deleteMenuItem(request, id):
     return render(request, "delete.html")
 
 
-def editMenuItem(request, id):
+def edit_menu_item(request, id):
     menuItemId = id
     menuItem = MenuItem.objects.get(id=menuItemId)
-    form = MenuItemForm(instance=menuItem)
+    form = MenuUpdateForm(instance=menuItem)
 
     if request.method == "POST":
-        form = MenuItemForm(request.POST, instance=menuItem)
+        form = MenuUpdateForm(request.POST, instance=menuItem)
         if form.is_valid():
             form.save()
             return redirect("restaurant_admin")
@@ -59,7 +67,7 @@ def editMenuItem(request, id):
 
 # @login_required
 def restaurant_admin(request):
-    menuItems = MenuItem.objects.all()
+    menu_items = MenuItem.objects.all()
     if request.method == "POST":
         # Create object of form
         form = MenuItemForm(request.POST)
@@ -80,8 +88,9 @@ def restaurant_admin(request):
                     "current": item.current,
                     "item_type": item.item_type,
                     "form": form,
-                    "menuItems": menuItems,
+                    "menu_items": menu_items,
                 }
+                item.save()
                 "IS this correct?"
                 # if yes:
                 #     item.save()
@@ -92,18 +101,18 @@ def restaurant_admin(request):
             # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate data
             # Thus, this error message. Can rewrite it.
             error = "Something went wrong! Perhaps a menu item with this name and category already exists?"
-            form = MenuItemForm()
-            context = {"error": error, "menuItems": menuItems, "form": form}
+            # form = MenuItemForm()
+            context = {"error": error, "menu_items": menu_items, "form": form}
 
         # It's possible to add an "Is this information correct?" prompt followed by another click,
         # Then you would just do item.save() if they click yes, else return to the form page
-        return render(request, "restaurantadmin.html", context)
+        return render(request, "restaurant_admin.html", context)
     else:
         # if request method isn't post, the form hasn't been filled out yet.
         # Theoretically this won't trigger in the final product
         form = MenuItemForm()
         return render(
-            request, "restaurantadmin.html", {"form": form, "menuItems": menuItems}
+            request, "restaurant_admin.html", {"form": form, "menu_items": menu_items}
         )
 
 
@@ -117,14 +126,14 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    TYPES = ("Appetizers", "Salads", "Entrees", "Desserts", "Wine", "Cocktails")
+    TYPES = (
+        "Appetizers",
+        "Salads",
+        "Entrees",
+    )
     # get sub categories, pass in separately
     dinner_item = get_current_by_category("Dinner").values()
     return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})
-
-
-def home_view(request):
-    return render(request, "home.html")
 
 
 def lunch_view(request):
@@ -138,7 +147,7 @@ def brunch_view(request):
     TYPES = ("Salads", "Sandwiches", "Entrees")
     # get sub categories, pass in separately
     brunch_item = get_current_by_category("Brunch").values()
-    return render(request, "sundaybrunch.html", {"types": TYPES, "items": brunch_item})
+    return render(request, "sunday_brunch.html", {"types": TYPES, "items": brunch_item})
 
 
 def wine_view(request):
@@ -146,7 +155,3 @@ def wine_view(request):
     # get sub categories, pass in separately
     wine_item = get_current_by_category("Wine and Cocktails").values()
     return render(request, "wine.html", {"types": TYPES, "items": wine_item})
-
-
-def menu_view(request):
-    return render(request, "menu.html")

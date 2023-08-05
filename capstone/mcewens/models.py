@@ -35,8 +35,12 @@ class MenuItem(models.Model):
     # Price - check
     price = models.FloatField()
 
+    CURRENT_CHOICES = (
+        (1, "On menu"),
+        (0, "Not on menu"),
+    )
     # Current item? check
-    current = models.IntegerField(default=1)
+    current = models.IntegerField(default=1, choices=CURRENT_CHOICES)
 
     class Meta:
         unique_together = ("name", "category")
@@ -72,7 +76,7 @@ def get_current_by_category(cat):
     return MenuItem.objects.filter(category=cat, current=1)
 
 
-#Conner: implement try catch on this function
+# Conner: implement try catch on this function
 def get_menu_item_by_id(id):
     return MenuItem.objects.get(id=id)
 
@@ -128,7 +132,7 @@ def set_menu_item_price(item_id, new_p):
         raise ValueError("Item not found in database!")
 
 
-def delete_menu_item(id):
+def delete_menu_item_by_id(id):
     try:
         item = get_menu_item_by_id(id)
         item.delete()
