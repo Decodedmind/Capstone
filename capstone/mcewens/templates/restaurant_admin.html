@@ -1,16 +1,19 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menu Items</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menu Items</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}" />
 </head>
 
 <body>
-  <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
+  <a href="/">
+    <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" /></a>
+
+  {% if user.is_authenticated %} Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  {%endif%}
 
   <div>
     <form method="POST" action="">
