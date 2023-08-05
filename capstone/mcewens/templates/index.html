@@ -39,9 +39,14 @@
             <span class="icon-bar"></span>
           </button>
           {% comment %} <a class="navbar-brand page-scroll" href="#page-top">McEwen's</a> {% endcomment %}
+          {% if user.is_authenticated %} <a href="{%url 'restaurant_admin'%}">
+            <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
+          </a> 
+          {%else%}
           <a href="http://127.0.0.1:8000/home/">
             <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
           </a>
+          {% endif %}
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

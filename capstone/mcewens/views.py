@@ -73,7 +73,7 @@ def confirm_menu_item_view(request):
     return render(request, "edit.html", context)
 
 
-# @login_required
+@login_required
 def restaurant_admin(request):
     menu_items = MenuItem.objects.all()
     if request.method == "POST":
