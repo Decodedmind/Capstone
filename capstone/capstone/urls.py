@@ -14,4 +14,5 @@ urlpatterns = [
     path("dinner/", dinner_view, name="dinner"),
     path("brunch/", brunch_view, name="brunch"),
     path("wine/", wine_view, name="wine"),
+    path("reservation/", reservation_view, name="reservation"),
 ]

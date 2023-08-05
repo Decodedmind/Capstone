@@ -20,6 +20,10 @@ def index(request):
     return render(request, "index.html")
 
 
+def reservation_view(request):
+    return render(request, "reservation.html")
+
+
 def delete_menu_item(request, id):
     menuItemId = id
     if request.method == "POST":
