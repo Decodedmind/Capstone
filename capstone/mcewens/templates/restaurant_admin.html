@@ -108,11 +108,12 @@
   </head>
 
   <body>
-    <img
-      src="{% static 'img/logo_360.png' %}"
-      class="img-responsive"
-      alt="Logo"
-    />
+    <a href="/"
+      ><img
+        src="{% static 'img/logo_360.png' %}"
+        class="img-responsive"
+        alt="Logo"
+    /></a>
 
     {% if user.is_authenticated %} Hi {{ user.username }}! {% endif %}
     <a href="{% url 'logout' %}">Log Out</a>

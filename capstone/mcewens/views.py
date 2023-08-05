@@ -65,7 +65,7 @@ def edit_menu_item(request, id):
 #     return render(request, "restaurantadmin.html", context)
 
 
-# @login_required
+@login_required
 def restaurant_admin(request):
     menu_items = MenuItem.objects.all()
     if request.method == "POST":
