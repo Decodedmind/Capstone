@@ -35,8 +35,12 @@ class MenuItem(models.Model):
     # Price - check
     price = models.FloatField()
 
+    CURRENT_CHOICES = (
+        (1, "On menu"),
+        (0, "Not on menu"),
+    )
     # Current item? check
-    current = models.IntegerField(default=1)
+    current = models.IntegerField(default=1, choices=CURRENT_CHOICES)
 
     class Meta:
         unique_together = ("name", "category")
