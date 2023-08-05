@@ -44,6 +44,10 @@ def edit_menu_item(request, id):
         if form.is_valid():
             form.save()
             return redirect("restaurant_admin")
+        else:
+            context[
+                "error"
+            ] = "Something went wrong! Perhaps a menu item with this name and category already exists?"
 
     context = {"form": form, "mode": "Edit"}
     return render(request, "edit.html", context)
@@ -51,6 +55,7 @@ def edit_menu_item(request, id):
 
 def confirm_menu_item_view(request):
     item = request.session.get("item_input", None)
+    # This pulls the cached data back out and sets it up in a dictionary for us
     new_item = {
         "name": item.get("name"),
         "description": item.get("description"),
@@ -58,6 +63,8 @@ def confirm_menu_item_view(request):
         "item_type": item.get("item_type"),
         "price": item.get("price"),
     }
+    # If the user edits the form on the page, it goes with that
+    # Else it defers to what was already there
     form = MenuItemForm(request.POST or new_item)
     context = {"form": form, "mode": "Create"}
     if request.method == "POST":
@@ -65,6 +72,8 @@ def confirm_menu_item_view(request):
         try:
             form.save()
             return redirect("restaurant_admin")
+        # If the try fails, it's because he edited something to be different, so we throw the error up.
+        # Otherwise we just redirect.
         except:
             context[
                 "error"
@@ -73,22 +82,21 @@ def confirm_menu_item_view(request):
     return render(request, "edit.html", context)
 
 
-@login_required
+# @login_required
 def restaurant_admin(request):
     menu_items = MenuItem.objects.all()
     if request.method == "POST":
         form = MenuItemForm(request.POST)
+        # If the form is valid, we clean the data up and store is as a cookie in the session
+        # Then we redirect to a confirmation page where he can review it before saving.
+        # This prevents refreshing from sending duplicate data, and also saves hassle if user messes up.
         if form.is_valid():
             request.session["item_input"] = form.cleaned_data
             return redirect("confirm")
-        # Create object of form
-        # Generates an object from the form, but doesn't store it in the database
-        # IF they create an error message, it resets the page without breaking everything
-        try:
-            item = form.save(commit=False)
-            return redirect("confirm", item)
-        except:
-            # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate data
+
+        # If they create an error message, it resets the page without breaking everything
+        else:
+            # If validate fails, it's because of the unique flag blocking it.
             # Thus, this error message. Can rewrite it.
             error = "Something went wrong! Perhaps a menu item with this name and category already exists?"
             context = {"error": error, "menu_items": menu_items, "form": form}
@@ -110,11 +118,7 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    TYPES = (
-        "Appetizers",
-        "Salads",
-        "Entrees",
-    )
+    TYPES = ("Appetizers", "Salads", "Entrees")
     # get sub categories, pass in separately
     dinner_item = get_current_by_category("Dinner").values()
     return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})

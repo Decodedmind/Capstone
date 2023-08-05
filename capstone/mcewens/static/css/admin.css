@@ -1,0 +1,101 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #336273;
+  }
+
+  /* Form Styling */
+  div {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  form table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+  }
+
+  form table td {
+    padding: 5px;
+  }
+
+  form input[type="submit"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Menu Item Styling */
+    {
+    % for menu_item in menu_items %
+  }
+
+  div.menu-item- {
+      {
+      menu_item.id
+    }
+  }
+
+    {
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  div.menu-item- {
+      {
+      menu_item.id
+    }
+  }
+
+  p {
+    margin-bottom: 5px;
+  }
+
+  form.menu-item- {
+      {
+      menu_item.id
+    }
+  }
+
+    {
+    display: inline;
+    margin-left: 10px;
+  }
+
+  form.menu-item- {
+      {
+      menu_item.id
+    }
+  }
+
+<body>
+  <a href="/"
+    ><img
+      src="{% static 'img/logo_360.png' %}"
+      class="img-responsive"
+      alt="Logo"
+  /></a>
+
+    {
+    % endfor %
+  }
