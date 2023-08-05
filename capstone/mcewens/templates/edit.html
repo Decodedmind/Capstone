@@ -23,6 +23,14 @@
       <td>{{form.item_type.label}}</td>
       <td>{{form.item_type}}</td>
     </tr>
+    <tr>
+      <td>{{form.current.label}}</td>
+      {% if form.current == 1 %}
+      <td>Item is currently on menu. {{form.current}} </td>
+      {% else %}
+      <td>Item is NOT currently on menu. {{form.current}}</td>
+      {% endif %}
+    </tr>
   </table>
   <input type="submit" value="Edit Item" />
 </form>

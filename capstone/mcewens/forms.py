@@ -14,5 +14,19 @@ class MenuItemForm(forms.ModelForm):
         ]
         exclude = ["current"]
 
+
+class MenuUpdateForm(forms.ModelForm):
+    class Meta:
+        model = MenuItem
+        fields = [
+            "name",
+            "price",
+            "description",
+            "category",
+            "item_type",
+            "current",
+        ]
+
+
 # class deleteForm(forms.ModelForm):
 #     itemId = forms.IntegerField(required=True)

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from .forms import MenuItemForm
+from .forms import MenuItemForm, MenuUpdateForm
 from . import models
 from .models import *
 
@@ -39,10 +39,10 @@ def delete_menu_item(request, id):
 def edit_menu_item(request, id):
     menuItemId = id
     menuItem = MenuItem.objects.get(id=menuItemId)
-    form = MenuItemForm(instance=menuItem)
+    form = MenuUpdateForm(instance=menuItem)
 
     if request.method == "POST":
-        form = MenuItemForm(request.POST, instance=menuItem)
+        form = MenuUpdateForm(request.POST, instance=menuItem)
         if form.is_valid():
             form.save()
             return redirect("restaurant_admin")
