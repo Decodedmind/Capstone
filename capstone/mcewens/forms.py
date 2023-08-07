@@ -26,7 +26,3 @@ class MenuUpdateForm(forms.ModelForm):
             "item_type",
             "current",
         ]
-
-
-# class deleteForm(forms.ModelForm):
-#     itemId = forms.IntegerField(required=True)

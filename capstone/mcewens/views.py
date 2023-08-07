@@ -25,10 +25,9 @@ def reservation_view(request):
 
 
 def delete_menu_item(request, id):
-    menuItemId = id
     if request.method == "POST":
         if request.POST.get("yesno") == "YES":
-            delete_menu_item_by_id(menuItemId)
+            delete_menu_item_by_id(id)
             return redirect("restaurant_admin")
         else:
             return redirect("restaurant_admin")
@@ -37,79 +36,72 @@ def delete_menu_item(request, id):
 
 
 def edit_menu_item(request, id):
-    menuItemId = id
-    menuItem = MenuItem.objects.get(id=menuItemId)
-    form = MenuUpdateForm(instance=menuItem)
+    menu_item = MenuItem.objects.get(id=id)
+    form = MenuUpdateForm(instance=menu_item)
 
     if request.method == "POST":
-        form = MenuUpdateForm(request.POST, instance=menuItem)
+        form = MenuUpdateForm(request.POST, instance=menu_item)
         if form.is_valid():
             form.save()
             return redirect("restaurant_admin")
+        else:
+            context[
+                "error"
+            ] = "Something went wrong! Perhaps a menu item with this name and category already exists?"
 
-    context = {"form": form}
+    context = {"form": form, "mode": "Edit"}
     return render(request, "edit.html", context)
 
 
-# def restaurant_admin(request):
-#     form = MenuItemForm()
-#     menuItems = MenuItem.objects.all()
-#     if request.method == "POST":
-#         form = MenuItemForm(request.POST)
-#         name = request.POST.get("name")
-#         description = request.POST.get("description")
-#         price = request.POST.get("price")
-#         create_menu_item(name, description, price)
+def confirm_menu_item_view(request):
+    item = request.session.get("item_input", None)
+    # This pulls the cached data back out and sets it up in a dictionary for us
+    new_item = {
+        "name": item.get("name"),
+        "description": item.get("description"),
+        "category": item.get("category"),
+        "item_type": item.get("item_type"),
+        "price": item.get("price"),
+    }
+    # If the user edits the form on the page, it goes with that
+    # Else it defers to what was already there
+    form = MenuItemForm(request.POST or new_item)
+    context = {"form": form, "mode": "Create"}
+    if request.method == "POST":
+        form = MenuItemForm(request.POST)
+        try:
+            form.save()
+            return redirect("restaurant_admin")
+        # If the try fails, it's because he edited something to be different, so we throw the error up.
+        # Otherwise we just redirect.
+        except:
+            context[
+                "error"
+            ] = "Something went wrong! Perhaps a menu item with this name and category already exists?"
 
-#     context = {"form": form, "menuItems": menuItems}
-#     return render(request, "restaurantadmin.html", context)
+    return render(request, "edit.html", context)
 
 
 # @login_required
 def restaurant_admin(request):
     menu_items = MenuItem.objects.all()
     if request.method == "POST":
-        # Create object of form
         form = MenuItemForm(request.POST)
-        # Generates an object from the form, but doesn't store it in the database
-        # IF they create an error message, it resets the page without breaking everything
-        try:
-            item = form.save(commit=False)
-            if form.is_valid():
-                # if form is valid - which is should be always - spit all the information back on the screen
-                # as an example
-                form = MenuItemForm()
-                context = {
-                    "id": item.id,
-                    "name": item.name,
-                    "price": item.price,
-                    "description": item.description,
-                    "category": item.category,
-                    "current": item.current,
-                    "item_type": item.item_type,
-                    "form": form,
-                    "menu_items": menu_items,
-                }
-                item.save()
-                "IS this correct?"
-                # if yes:
-                #     item.save()
-                #     redirect to same restaurant_admin
-                # else:
-                #     redirect to same without save
-        except:
-            # If the try fails, it's almost guaranteed to be an issue with the .save()s, which means duplicate data
+        # If the form is valid, we clean the data up and store is as a cookie in the session
+        # Then we redirect to a confirmation page where he can review it before saving.
+        # This prevents refreshing from sending duplicate data, and also saves hassle if user messes up.
+        if form.is_valid():
+            request.session["item_input"] = form.cleaned_data
+            return redirect("confirm")
+
+        # If they create an error message, it resets the page without breaking everything
+        else:
+            # If validate fails, it's because of the unique flag blocking it.
             # Thus, this error message. Can rewrite it.
             error = "Something went wrong! Perhaps a menu item with this name and category already exists?"
-            # form = MenuItemForm()
             context = {"error": error, "menu_items": menu_items, "form": form}
-
-        # It's possible to add an "Is this information correct?" prompt followed by another click,
-        # Then you would just do item.save() if they click yes, else return to the form page
         return render(request, "restaurant_admin.html", context)
     else:
-        # if request method isn't post, the form hasn't been filled out yet.
-        # Theoretically this won't trigger in the final product
         form = MenuItemForm()
         return render(
             request, "restaurant_admin.html", {"form": form, "menu_items": menu_items}
@@ -126,11 +118,7 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    TYPES = (
-        "Appetizers",
-        "Salads",
-        "Entrees",
-    )
+    TYPES = ("Appetizers", "Salads", "Entrees")
     # get sub categories, pass in separately
     dinner_item = get_current_by_category("Dinner").values()
     return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})
@@ -155,6 +143,7 @@ def wine_view(request):
     # get sub categories, pass in separately
     wine_item = get_current_by_category("Wine and Cocktails").values()
     return render(request, "wine.html", {"types": TYPES, "items": wine_item})
+
 
 def profile_redirect(request):
     return redirect("restaurant_admin")
