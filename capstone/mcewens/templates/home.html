@@ -48,7 +48,7 @@
         <h2>Gallery</h2>
         <hr />
         <p>
-          Cooking is love made visible. - Anonymous
+          Cooking is love made visible. 
         </p>
       </div>
     </div>
@@ -183,24 +183,29 @@
      <button id="close-button">x</button></script>
    
     </div>
+
+
+
   </div>
+
+
   <!-- Contact Section -->
   <div id="contact" class="text-center">
     <div class="container">
       <div class="section-title text-center">
         <h2>Contact</h2>
         <hr />
-        <p>
-          
-        </p>
+        <p></p>
       </div>
       <div class="col-md-10 col-md-offset-1">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" method="post" action="{% url 'contact' %}" >
+          {% csrf_token %}
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <input
                   type="text"
+                  name="name"
                   id="name"
                   class="form-control"
                   placeholder="Name"
@@ -213,6 +218,7 @@
               <div class="form-group">
                 <input
                   type="email"
+                  name="email"
                   id="email"
                   class="form-control"
                   placeholder="Email"
@@ -234,13 +240,13 @@
             <p class="help-block text-danger"></p>
           </div>
           <div id="success"></div>
-          <button type="submit" class="btn btn-custom btn-lg">
-            Send Message
-          </button>
+          <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
         </form>
       </div>
     </div>
   </div>
+
+  {% comment %} footer content  {% endcomment %}
   <div id="footer">
     <div class="container text-center">
       <div class="col-md-4">
