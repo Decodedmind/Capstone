@@ -321,7 +321,7 @@ header .intro-text {
 
 /* restaurant dinner part  */
 #restaurant-menu-dinner .section-title {
-	background: #444 url(../img/osso.jpg) center center no-repeat fixed;
+	background: #444 url(../img/duck.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
 
@@ -373,29 +373,29 @@ header .intro-text {
 }
 /* restaurant brunch  */
 #restaurant-menu-brunch .section-title {
-	background: #444 url(../img/.jpg) center center no-repeat fixed;
+	background: #444 url(../img/benny.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
 
-#restaurant-menu-bruch .section-title h2 {
+#restaurant-menu-brunch .section-title h2 {
 	color: #fff;
 }
 
-#restaurant-menu-bruch img {
+#restaurant-menu-brunch img {
 	width: 300px;
 	box-shadow: 15px 0 #DB5C32;
 }
-#restaurant-menu-bruch h3 {
+#restaurant-menu-brunch h3 {
 	padding: 10px 0;
 	text-transform: uppercase;
 }
-#restaurant-menu-bruch .menu-section hr {
+#restaurant-menu-brunch .menu-section hr {
 	margin: 0 auto;
 }
-#restaurant-menu-bruch .menu-section {
+#restaurant-menu-brunch .menu-section {
 	margin: 0 20px 80px;
 }
-#restaurant-menu-bruch .menu-section-title {
+#restaurant-menu-brunch .menu-section-title {
 	font-size: 26px;
 	display: block;
 	font-weight: 500;
@@ -403,26 +403,133 @@ header .intro-text {
 	margin: 60px 0;
 	text-align: center;
 }
-#restaurant-menu-bruch .menu-item {
+#restaurant-menu-brunch .menu-item {
 	margin: 35px 0;
 	font-size: 18px;
 }
-#restaurant-menu-bruch .menu-item-name {
+#restaurant-menu-brunch .menu-item-name {
 	font-weight: 600;
 	font-size: 17px;
 	color: #555;
 	border-bottom: 2px dotted rgb(213, 213, 213);
 }
-#restaurant-menu-bruch .menu-item-description {
+#restaurant-menu-brunch .menu-item-description {
 	font-style: italic;
 	font-size: 15px;
 }
-#restaurant-menu-bruch .menu-item-price {
+#restaurant-menu-brunch .menu-item-price {
 	float: right;
 	font-weight: 600;
 	color: #555;
 	margin-top: -26px;
 }
+
+/* restaurant wine  */
+#restaurant-menu-wine .section-title {
+	background: #444 url(../img/drinks.jpg) center center no-repeat fixed;
+	background-size: cover;
+}
+
+#restaurant-menu-wine .section-title h2 {
+	color: #fff;
+}
+
+#restaurant-menu-wine img {
+	width: 300px;
+	box-shadow: 15px 0 #DB5C32;
+}
+#restaurant-menu-wine h3 {
+	padding: 10px 0;
+	text-transform: uppercase;
+}
+#restaurant-menu-wine .menu-section hr {
+	margin: 0 auto;
+}
+#restaurant-menu-wine .menu-section {
+	margin: 0 20px 80px;
+}
+#restaurant-menu-wine .menu-section-title {
+	font-size: 26px;
+	display: block;
+	font-weight: 500;
+	color: #444;
+	margin: 60px 0;
+	text-align: center;
+}
+#restaurant-menu-wine .menu-item {
+	margin: 35px 0;
+	font-size: 18px;
+}
+#restaurant-menu-wine .menu-item-name {
+	font-weight: 600;
+	font-size: 17px;
+	color: #555;
+	border-bottom: 2px dotted rgb(213, 213, 213);
+}
+#restaurant-menu-wine .menu-item-description {
+	font-style: italic;
+	font-size: 15px;
+}
+#restaurant-menu-wine .menu-item-price {
+	float: right;
+	font-weight: 600;
+	color: #555;
+	margin-top: -26px;
+}
+
+/* restaurant menu-menu  */
+#restaurant-menu-menu .section-title {
+	background: #444 url(../img/sign2.jpg) center center no-repeat fixed;
+	background-size: cover;
+}
+
+#restaurant-menu-menu .section-title h2 {
+	color: #fff;
+}
+
+#restaurant-menu-menu img {
+	width: 300px;
+	box-shadow: 15px 0 #DB5C32;
+}
+#restaurant-menu-menu h3 {
+	padding: 10px 0;
+	text-transform: uppercase;
+}
+#restaurant-menu-menu .menu-section hr {
+	margin: 0 auto;
+}
+#restaurant-menu-menu .menu-section {
+	margin: 0 20px 80px;
+}
+#restaurant-menu-menu .menu-section-title {
+	font-size: 26px;
+	display: block;
+	font-weight: 500;
+	color: #444;
+	margin: 60px 0;
+	text-align: center;
+}
+#restaurant-menu-menu .menu-item {
+	margin: 35px 0;
+	font-size: 18px;
+}
+#restaurant-menu-menu .menu-item-name {
+	font-weight: 600;
+	font-size: 17px;
+	color: #555;
+	border-bottom: 2px dotted rgb(213, 213, 213);
+}
+#restaurant-menu-menu .menu-item-description {
+	font-style: italic;
+	font-size: 15px;
+}
+#restaurant-menu-menu .menu-item-price {
+	float: right;
+	font-weight: 600;
+	color: #555;
+	margin-top: -26px;
+}
+
 
 /* Portfolio Section */
 #portfolio {

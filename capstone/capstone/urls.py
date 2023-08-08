@@ -17,5 +17,6 @@ urlpatterns = [
     path("wine/", wine_view, name="wine"),
     path("reservation/", reservation_view, name="reservation"),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("contact/", contact, name="contact"),
     # path("accounts/profile/", profile_redirect, name="profile")
 ]

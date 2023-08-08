@@ -5,7 +5,31 @@ from .forms import MenuItemForm, MenuUpdateForm
 from . import models
 from .models import *
 
+from django.core.mail import send_mail
+from django.conf import settings
+
+
 # research block styles - could fix issue with image on menu page
+def contact(request):
+    if request.method == "POST":
+        name = request.POST["name"]
+        customer_email = request.POST["email"]
+        message = request.POST["message"]
+        subject = "{}".format(name)  # Adding a subject prefix
+
+        # Check if the form is valid before sending the email
+        if name and customer_email and message:
+            send_mail(
+                subject,
+                f"From: {customer_email}\n\n{message}",
+                settings.EMAIL_HOST_USER,  # Owner's email address as the recipient's address
+                [
+                    settings.EMAIL_HOST_USER
+                ],  # Owner's email address as the Bcc (hidden from customer)
+                fail_silently=False,
+            )
+
+    return render(request, "home.html")
 
 
 def home_view(request):
