@@ -1,101 +1,146 @@
-/* CSS Reset */
+/* Reset default margin and padding for elements */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #336273;
-  }
+/* Set the background color and text color for the whole page */
+body {
+  background-color: #336273;
+  color: #333;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
 
-  /* Form Styling */
-  div {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+/* Center the main content */
+div {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #F4D892;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  form table {
-    width: 100%;
-    margin-top: 15px;
-    border-collapse: collapse;
-  }
+/* Style the header */
+img.img-responsive {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto 20px;
+}
 
-  form table td {
-    padding: 5px;
-  }
+/* Style the user greeting */
+p {
+  text-align: right;
+  margin-bottom: 10px;
+}
 
-  form input[type="submit"] {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+/* Style the logout link */
+p a {
+  color: #007bff;
+}
 
-  /* Menu Item Styling */
-    {
-    % for menu_item in menu_items %
-  }
+/* Style the form */
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  color: #F4D892;
+}
 
-  div.menu-item- {
-      {
-      menu_item.id
-    }
-  }
+table td {
+  padding: 10px;
+  border: none;
+}
 
-    {
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+/* Style the form input fields */
+input[type='text'],
+input[type='number'] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #F4D892;
+  border-radius: 4px;
+}
 
-  div.menu-item- {
-      {
-      menu_item.id
-    }
-  }
+input[type='submit'] {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  p {
-    margin-bottom: 5px;
-  }
+/* Style the error message */
+p.error {
+  color: red;
+  margin-bottom: 20px;
+}
 
-  form.menu-item- {
-      {
-      menu_item.id
-    }
-  }
+/* Style each menu item */
+div[class^='menu-item-'] {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 10px;
+}
 
-    {
-    display: inline;
-    margin-left: 10px;
-  }
+div[class^='menu-item-'] p {
+  margin: 0;
+}
 
-  form.menu-item- {
-      {
-      menu_item.id
-    }
-  }
+/* Style the item type separately */
+div[class^='menu-item-'] .item-type {
+  grid-column: 1 / span 2;
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+  color: #fff;
+}
 
-<body>
-  <a href="/"
-    ><img
-      src="{% static 'img/logo_360.png' %}"
-      class="img-responsive"
-      alt="Logo"
-  /></a>
+/* Style different types of menu items */
+div[class^='menu-item-'].type-appetizer {
+  border: 2px solid #c8c800;
+}
 
-    {
-    % endfor %
-  }
+div[class^='menu-item-'].type-main-course {
+  border: 2px solid #00c800;
+}
+
+div[class^='menu-item-'].type-dessert {
+  border: 2px solid #c800c8;
+}
+
+div.menu-item-1 {
+  /* Example specific styling for a specific menu item */
+  background-color: #F4D892;
+}
+
+/* Style the different types */
+div[class^='menu-item-'].type-wine {
+  background-color: #FFA07A; /* Use any color you like for wine type */
+}
+
+div[class^='menu-item-'].type-dinner {
+  background-color: #ADD8E6; /* Use any color you like for dinner type */
+}
+
+/* Style the edit and delete buttons */
+div[class^='menu-item-'] button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+div[class^='menu-item-'] button:last-child {
+  margin-right: 0;
+}
