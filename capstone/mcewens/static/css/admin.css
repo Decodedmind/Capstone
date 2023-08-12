@@ -37,7 +37,7 @@ p {
 
 /* Style the logout link */
 p a {
-  color:white;
+  color:rgb(0, 0, 0);
 }
 
 /* Style the form */
@@ -155,4 +155,8 @@ div[class^='menu-item-'] button:last-child {
 #username {
   font-weight: bold;
   color: #007bff; /* Change this to your desired text color */
+}
+
+.ad{
+  color: #000000;
 }

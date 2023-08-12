@@ -19,11 +19,11 @@
         alt="Logo"
       />
     </a>
-
-    {% if user.is_authenticated %} Hi {{ user.username }}!
-    <p><a href="{% url 'logout' %}">Log Out</a></p>
-    {% endif %}
-
+    <div class="ad">
+      {% if user.is_authenticated %} Hi {{ user.username }}!
+      <p><a href="{% url 'logout' %}">Log Out</a></p>
+      {% endif %}
+    </div>
     <div>
       <form method="POST" action="">
         {% csrf_token %}
