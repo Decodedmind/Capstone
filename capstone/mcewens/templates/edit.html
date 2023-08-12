@@ -1,39 +1,63 @@
-<h2>{{mode}} this item?</h2>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Items</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/admin.css' %}"
+    />
+  </head>
+  <body>
+    <a href="/">
+      <img
+        src="{% static 'img/logo_360.png' %}"
+        class="img-responsive"
+        alt="Logo"
+      />
+    </a>
+    <h2>{{mode}} this item?</h2>
 
-<form method="POST" action="">
-  {% csrf_token %}
-  <table>
-    <tr>
-      <td>{{form.name.label}}</td>
-      <td>{{form.name}}</td>
-    </tr>
-    <tr>
-      <td>{{form.description.label}}</td>
-      {% if not form.description %}
-      <td>(No description entered)</td>
-      {% else %}
-      <td>{{form.description}}</td>
-      {% endif %}
-    </tr>
-    <tr>
-      <td>{{form.price.label}}</td>
-      <td>{{form.price}}</td>
-    </tr>
-    <tr>
-      <td>{{form.category.label}}</td>
-      <td>{{form.category}}</td>
-    </tr>
-    <tr>
-      <td>{{form.item_type.label}}</td>
-      <td>{{form.item_type}}</td>
-    </tr>
-    <tr>
-      <td>{{form.current.label}}</td>
-      <td>{{form.current}}</td>
-    </tr>
-  </table>
-  <input type="submit" value="{{mode}} Item" />
-  <a href="{%url 'restaurant_admin'%}"><button type="button">Cancel</button></a>
-  <p>{{error}}</p>
-
-</form>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>{{form.name.label}}</td>
+          <td>{{form.name}}</td>
+        </tr>
+        <tr>
+          <td>{{form.description.label}}</td>
+          {% if not form.description %}
+          <td>(No description entered)</td>
+          {% else %}
+          <td>{{form.description}}</td>
+          {% endif %}
+        </tr>
+        <tr>
+          <td>{{form.price.label}}</td>
+          <td>{{form.price}}</td>
+        </tr>
+        <tr>
+          <td>{{form.category.label}}</td>
+          <td>{{form.category}}</td>
+        </tr>
+        <tr>
+          <td>{{form.item_type.label}}</td>
+          <td>{{form.item_type}}</td>
+        </tr>
+        <tr>
+          <td>{{form.current.label}}</td>
+          <td>{{form.current}}</td>
+        </tr>
+      </table>
+      <input type="submit" value="{{mode}} Item" />
+      <a href="{%url 'restaurant_admin'%}"
+        ><button type="button">Cancel</button></a
+      >
+      <p>{{error}}</p>
+    </form>
+  </body>
+</html>

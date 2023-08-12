@@ -37,7 +37,7 @@ p {
 
 /* Style the logout link */
 p a {
-  color: #007bff;
+  color:white;
 }
 
 /* Style the form */
@@ -143,4 +143,16 @@ div[class^='menu-item-'] button {
 
 div[class^='menu-item-'] button:last-child {
   margin-right: 0;
+}
+
+#greeting {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#username {
+  font-weight: bold;
+  color: #007bff; /* Change this to your desired text color */
 }
