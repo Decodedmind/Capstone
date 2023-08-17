@@ -113,7 +113,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 /* Navigation */
 #menu {
 	padding: 20px;
-	transition: all 0.8s;
+	transition: all 1s;
 }
 #menu.navbar-default {
 	background-color: rgba(248, 248, 248, 0);
@@ -121,20 +121,20 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 }
 #menu a.navbar-brand {
 	font-family: 'Dancing Script', cursive;
-	font-size: 36px;
+	font-size: 40px;
 	color: #DB5C32;
 	font-weight: 700;
 	letter-spacing: 1px;
 }
 #menu.navbar-default .navbar-nav > li > a {
 	text-transform: uppercase;
-	color: #ddd;
-	font-weight: 500;
+	color: #ffffff;
+	font-weight: 700;
 	font-size: 15px;
 	padding: 5px 0;
 	border: 2px solid transparent;
-	letter-spacing: 0.5px;
-	margin: 10px 15px 0 15px;
+	letter-spacing: 2px;
+	margin: 40px 15px 0 15px;
 }
 #menu.navbar-default .navbar-nav > li > a:hover {
 	color: #DB5C32;
@@ -245,16 +245,17 @@ header .intro-text {
 #about .about-img {
 	display: inline-block;
 	position: relative;
+	
 }
-#about .about-img:before {
-	display: block;
-	content: '';
-	position: absolute;
-	top: 8px;
-	right: 8px;
-	bottom: 8px;
-	left: 8px;
-	border: 1px solid rgba(255, 255, 255, 0.5);
+.about-img:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 12px;   /* Adjust the top value to control the spacing */
+    right: 12px; /* Adjust the right value to control the spacing */
+    bottom: 12px; /* Adjust the bottom value to control the spacing */
+    left: 12px;  /* Adjust the left value to control the spacing */
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 #about p {
 	line-height: 24px;

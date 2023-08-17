@@ -51,6 +51,7 @@ table {
 table td {
   padding: 10px;
   border: none;
+  color: #f2f2f2;
 }
 
 /* Style the form input fields */
@@ -159,4 +160,8 @@ div[class^='menu-item-'] button:last-child {
 
 .ad{
   color: #000000;
+}
+
+h2 {
+  color: #f2f2f2;
 }
