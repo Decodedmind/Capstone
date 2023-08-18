@@ -273,7 +273,7 @@
         <a href="https://basecampcodingacademy.org/" rel="nofollow" target="_blank"><strong>Base Camp Coding Academy
             Graduate
             Institute</strong></a>
-        {% if !user.is_authenticated %}
+        {% if not user.is_authenticated %}
         </br><a href="{% url 'login' %}">Log In</a>
         {% endif %}
 
