@@ -9,7 +9,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-# research block styles - could fix issue with image on menu page
 def contact(request):
     if request.method == "POST":
         name = request.POST["name"]

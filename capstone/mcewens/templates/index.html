@@ -1,99 +1,97 @@
-{% load static %}  
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>McEwen's</title>
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>McEwen's</title>
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}" />
 
-    <!-- Stylesheet
+  <!-- Stylesheet
     ================================================== -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nivo-lightbox/nivo-lightbox.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nivo-lightbox/default.css' %}" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nivo-lightbox/nivo-lightbox.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nivo-lightbox/default.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet" />
 </head>
+
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <!-- Navigation -->
-    <nav id="menu" class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#bs-example-navbar-collapse-1"
-          >
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span> <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          {% comment %} <a class="navbar-brand page-scroll" href="#page-top">McEwen's</a> {% endcomment %}
-          {% if user.is_authenticated %} <a href="{%url 'restaurant_admin'%}">
-            <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
-          </a> 
-          {%else%}
-          <a href="http://127.0.0.1:8000/home/">
-            <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
-          </a>
-          {% endif %}
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://127.0.0.1:8000/home/#about" class="page-scroll">Our story</a></li>
-           
-            <li><a href="http://127.0.0.1:8000/home/#portfolio" class="page-scroll">Gallery</a></li>
-
-            
-            <li><a href="http://127.0.0.1:8000/home/#reservation" class="page-scroll"></a></li>
-
-            <li><a href="http://127.0.0.1:8000/home/#call-reservation" class="page-scroll">Reservation</a></li> 
-
-            <li><a href="{% url 'menu' %}" class="page-scroll">Menu</a></li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+  <!-- Navigation -->
+  <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span> <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        {% comment %} <a class="navbar-brand page-scroll" href="#page-top">McEwen's</a> {% endcomment %}
+        {% if user.is_authenticated %} <a href="{%url 'restaurant_admin'%}">
+          <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
+        </a>
+        {%else%}
+        <a href="{%url 'home'%}">
+          <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
+        </a>
+        {% endif %}
       </div>
-    </nav>
-    
-    <!-- Header -->
-    {% comment %} <header id="header">
-      <div class="intro" id="introSection">
-       
-        <div class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="intro-text">
-                <a class="navbar-brand page-scroll" href="#page-top">
-              </a>
-                </h
-                ></a
-                >
-              
-       
-    </header> {% endcomment %}
-   {% block content %}{% endblock content %}   
 
-    <!-- The rest of the HTML, JavaScript, and footer goes here -->
-    <script type="text/javascript" src="{% static 'js/jquery.1.11.1.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/SmoothScroll.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/nivo-lightbox.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script>
-    {% comment %} <script type="text/javascript" src="{% static 'js/jqBootstrapValidation.js' %}"></script> {% endcomment %}
-    <script type="text/javascript" src="{% static 'js/contact_me.js' %}"></script> 
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{%url 'home'%}#about" class="page-scroll">Our story</a></li>
+
+          <li><a href="{%url 'home'%}#portfolio" class="page-scroll">Gallery</a></li>
+
+
+          <li><a href="{%url 'home'%}#reservation" class="page-scroll"></a></li>
+
+          <li><a href="{%url 'home'%}#call-reservation" class="page-scroll">Reservation</a></li>
+
+          <li><a href="{% url 'menu' %}" class="page-scroll">Menu</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+  </nav>
+
+  <!-- Header -->
+  {% comment %} <header id="header">
+    <div class="intro" id="introSection">
+
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="intro-text">
+              <a class="navbar-brand page-scroll" href="#page-top">
+              </a>
+              </h></a>
+
+
+  </header> {% endcomment %}
+  {% block content %}{% endblock content %}
+
+  <!-- The rest of the HTML, JavaScript, and footer goes here -->
+  <script type="text/javascript" src="{% static 'js/jquery.1.11.1.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/SmoothScroll.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/nivo-lightbox.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script>
+  {% comment %} <script type="text/javascript" src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+  {% endcomment %}
+  <script type="text/javascript" src="{% static 'js/contact_me.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
+
 </html>
