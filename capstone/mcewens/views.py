@@ -48,9 +48,21 @@ def reservation_view(request):
 
 
 def delete_menu_item(request, id):
+    item = get_menu_item_by_id(id)
     if request.method == "POST":
         if request.POST.get("yesno") == "YES":
             delete_menu_item_by_id(id)
+            return redirect("restaurant_admin")
+        else:
+            return redirect("restaurant_admin")
+
+    return render(request, "delete.html", {"item": item})
+
+
+def delete_all_view(request):
+    if request.method == "POST":
+        if request.POST.get("yesno") == "YES":
+            delete_all_menu_items()
             return redirect("restaurant_admin")
         else:
             return redirect("restaurant_admin")
