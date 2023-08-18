@@ -28,8 +28,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "erosas@basecampcodingacademy.org"
-EMAIL_HOST_PASSWORD = "nsqwvfhxwcklxwdb"
+EMAIL_HOST_USER = "mcewenswebsite@gmail.com"
+EMAIL_HOST_PASSWORD = "neyhkfpclqakilpc"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
