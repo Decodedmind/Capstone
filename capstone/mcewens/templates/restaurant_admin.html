@@ -1,81 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu Items</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/admin.css' %}"
-    />
-  </head>
-  <body>
-    <a href="/">
-      <img
-        src="{% static 'img/logo_360.png' %}"
-        class="img-responsive"
-        alt="Logo"
-      />
-    </a>
-    <div class="ad">
-      {% if user.is_authenticated %} Hi {{ user.username }}!
-      <p><a href="{% url 'logout' %}">Log Out</a></p>
-      {% endif %}
-    </div>
-    <div>
-      <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-          <tr>
-            <td>{{form.name.label}}</td>
-            <td>{{form.name}}</td>
-          </tr>
-          <tr>
-            <td>{{form.description.label}}</td>
-            <td>{{form.description}}</td>
-          </tr>
-          <tr>
-            <td>{{form.price.label}} $</td>
-            <td>{{form.price}}</td>
-          </tr>
-          <tr>
-            <td>{{form.category.label}}</td>
-            <td>{{form.category}}</td>
-          </tr>
-          <tr>
-            <td>{{form.item_type.label}}</td>
-            <td>{{form.item_type}}</td>
-          </tr>
-        </table>
-        <input type="submit" value="Add Item" />
-      </form>
-    </div>
 
-    {% if error %}
-    <p class="error">{{ error }}</p>
-    {% endif %} {% for menu_item in menu_items %}
-    <div
-      class="menu-item-{{ menu_item.id }} {% if menu_item.item_type == 'wine' %}type-wine{% elif menu_item.item_type == 'dinner' %}type-dinner{% endif %}"
-    >
-      <p>Name: {{ menu_item.name }}</p>
-      <p>Description: {{ menu_item.description }}</p>
-      <p>Price: ${{ menu_item.price }}</p>
-      <p><strong>Category:</strong> {{ menu_item.category }}</p>
-      {% if menu_item.current is 1 %}
-      <p class="current-yes"><strong>Current:</strong> Yes!</p>
-      {% else %}
-      <p class="current-no"><strong>Current:</strong> No!</p>
-      {% endif %}
-      <p><strong>Type:</strong> {{ menu_item.item_type }}</p>
-      <a href="{% url 'edit' menu_item.id %}"
-        ><button type="button">Edit</button></a
-      >
-      <a href="{% url 'delete' menu_item.id %}"
-        ><button type="button">Delete</button></a
-      >
-    </div>
-    {% endfor %}
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Items</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}" />
+</head>
+
+<body>
+  <a href="/">
+    <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
+  </a>
+  <div class="ad">
+    {% if user.is_authenticated %} Hi {{ user.username }}!
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% endif %}
+  </div>
+  <div>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>{{form.name.label}}</td>
+          <td>{{form.name}}</td>
+        </tr>
+        <tr>
+          <td>{{form.description.label}}</td>
+          <td>{{form.description}}</td>
+        </tr>
+        <tr>
+          <td>{{form.price.label}} $</td>
+          <td>{{form.price}}</td>
+        </tr>
+        <tr>
+          <td>{{form.category.label}}</td>
+          <td>{{form.category}}</td>
+        </tr>
+        <tr>
+          <td>{{form.item_type.label}}</td>
+          <td>{{form.item_type}}</td>
+        </tr>
+      </table>
+      <input type="submit" value="Add Item" />
+    </form>
+  </div>
+
+  {% if error %}
+  <p class="error">{{ error }}</p>
+  {% endif %} {% for menu_item in menu_items %}
+  <div
+    class="menu-item-{{ menu_item.id }} {% if menu_item.item_type == 'wine' %}type-wine{% elif menu_item.item_type == 'dinner' %}type-dinner{% endif %}">
+    <p>Name: {{ menu_item.name }}</p>
+    <p>Description: {{ menu_item.description }}</p>
+    <p>Price: ${{ menu_item.price }}</p>
+    <p><strong>Category:</strong> {{ menu_item.category }}</p>
+    {% if menu_item.current is 1 %}
+    <p class="current-yes"><strong>Current:</strong> Yes!</p>
+    {% else %}
+    <p class="current-no"><strong>Current:</strong> No!</p>
+    {% endif %}
+    <p><strong>Type:</strong> {{ menu_item.item_type }}</p>
+    <a href="{% url 'edit' menu_item.id %}"><button type="button">Edit</button></a>
+    <a href="{% url 'delete' menu_item.id %}"><button type="button">Delete</button></a>
+  </div>
+  {% endfor %}
+
+  <div>
+    <a href="{% url 'delete_all' %}"><button type="button">DELETE ALL</button></a>
+  </div>
+</body>
+
 </html>
