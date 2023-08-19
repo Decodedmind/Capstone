@@ -141,7 +141,9 @@ def delete_menu_item_by_id(id):
         raise ValueError("Item not found in database!")
 
 
-def delete_all_menu_items():
-    items = MenuItem.objects.all()
+def delete_all_except_wine():
+    items = (
+        MenuItem.objects.all().exclude(item_type="Wine").exclude(item_type="Cocktails")
+    )
     items.delete()
     return
