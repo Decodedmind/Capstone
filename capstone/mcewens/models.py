@@ -33,7 +33,7 @@ class MenuItem(models.Model):
     description = models.TextField(max_length=200, blank=True)
 
     # Price - check
-    price = models.FloatField()
+    price = models.CharField(max_length=50)
 
     CURRENT_CHOICES = (
         (1, "On menu"),
