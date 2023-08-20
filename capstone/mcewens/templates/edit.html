@@ -5,59 +5,192 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu Items</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/admin.css' %}"
-    />
-  </head>
-  <body>
-    <a href="/">
-      <img
-        src="{% static 'img/logo_360.png' %}"
-        class="img-responsive"
-        alt="Logo"
-      />
-    </a>
-    <h2>{{mode}} this item?</h2>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/' %}" />
+    <style>
+      /* Reset some default styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    <form method="POST" action="">
-      {% csrf_token %}
-      <table>
-        <tr>
-          <td>{{form.name.label}}</td>
-          <td>{{form.name}}</td>
-        </tr>
-        <tr>
-          <td>{{form.description.label}}</td>
-          {% if not form.description %}
-          <td>(No description entered)</td>
-          {% else %}
-          <td>{{form.description}}</td>
-          {% endif %}
-        </tr>
-        <tr>
-          <td>{{form.price.label}}</td>
-          <td>{{form.price}}</td>
-        </tr>
-        <tr>
-          <td>{{form.category.label}}</td>
-          <td>{{form.category}}</td>
-        </tr>
-        <tr>
-          <td>{{form.item_type.label}}</td>
-          <td>{{form.item_type}}</td>
-        </tr>
-        <tr>
-          <td>{{form.current.label}}</td>
-          <td>{{form.current}}</td>
-        </tr>
-      </table>
-      <input type="submit" value="{{mode}} Item" />
-      <a href="{%url 'restaurant_admin'%}"
-        ><button type="button">Cancel</button></a
-      >
-      <p>{{error}}</p>
-    </form>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #336273;
+      }
+
+      .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      .form-container img {
+        max-width: 150px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: black; /* Fun color */
+      }
+
+      table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+      }
+
+      table td {
+        padding: 12px;
+        border-bottom: 1px solid #ccc;
+        color: #333;
+      }
+
+      label {
+        font-weight: bold;
+        color: black; /* Fun color */
+      }
+
+      /* Add hover effect for table rows */
+      table tr:hover {
+        background-color: #fff9e6; /* Light yellow */
+        transition: background-color 0.2s;
+      }
+
+      input[type="text"],
+      select {
+        width: 78%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .submit-button,
+      .cancel-button {
+        padding: 10px 20px;
+        background-color: #336273;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-right: 10px;
+        box-shadow: 0px 4px 0px #f4d892;
+        transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+      }
+
+      .submit-button:hover,
+      .cancel-button:hover {
+        background-color: #336273;
+        transform: translateY(-2px);
+        box-shadow: 0px 2px 0px #2980b9;
+      }
+
+      .submit-button:active,
+      .cancel-button:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+      .error {
+        color: red;
+        margin-top: 10px;
+      }
+      .bg {
+        width: 100%;
+        height: 100vh;
+
+        align-items: center;
+        justify-content: center;
+        background-size: 300% 300%;
+        background-image: linear-gradient(
+          -45deg,
+          #336273 0%,
+          #336273 50%,
+          #336273 51%,
+          #D3582F 100%
+        );
+        -webkit-animation: AnimateBG 20s ease infinite;
+        animation: AnimateBG 10s ease infinite;
+      }
+
+      @-webkit-keyframes AnimateBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes AnimateBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+    </style>
+  </head>
+  <body class="bg">
+    <div class="form-container">
+      <a href="/">
+        <img
+          src="{% static 'img/logo_360.png' %}"
+          class="img-responsive"
+          alt="Logo"
+        />
+      </a>
+
+      <h2>{{mode}} this item?</h2>
+
+      <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td><label>{{form.name.label}}</label></td>
+            <td>{{form.name}}</td>
+          </tr>
+          <tr>
+            <td><label>{{form.description.label}}</label></td>
+            <td>
+              {% if not form.description %} (No description entered) {% else %}
+              {{form.description}} {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td><label>{{form.price.label}}</label></td>
+            <td>{{form.price}}</td>
+          </tr>
+          <tr>
+            <td><label>{{form.category.label}}</label></td>
+            <td>{{form.category}}</td>
+          </tr>
+          <tr>
+            <td><label>{{form.item_type.label}}</label></td>
+            <td>{{form.item_type}}</td>
+          </tr>
+          <tr>
+            <td><label>{{form.current.label}}</label></td>
+            <td>{{form.current}}</td>
+          </tr>
+        </table>
+        <input type="submit" class="submit-button" value="{{mode}} Item" />
+        <a href="{% url 'restaurant_admin' %}" class="cancel-button">Cancel</a>
+        <p class="error">{{error}}</p>
+      </form>
+    </div>
   </body>
 </html>

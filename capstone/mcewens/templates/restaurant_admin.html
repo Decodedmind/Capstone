@@ -12,7 +12,7 @@
     />
   </head>
 
-  <body>
+  <body class="bg">
     <a href="/">
       <img
         src="{% static 'img/logo_360.png' %}"
@@ -38,7 +38,7 @@
             <td>{{form.description}}</td>
           </tr>
           <tr>
-            <td>{{form.price.label}} $</td>
+            <td>{{form.price.label}}</td>
             <td>{{form.price}}</td>
           </tr>
           <tr>
@@ -60,9 +60,9 @@
     <div
       class="menu-item-{{ menu_item.id }} {% if menu_item.item_type == 'wine' %}type-wine{% elif menu_item.item_type == 'dinner' %}type-dinner{% endif %}"
     >
-      <p>Name: {{ menu_item.name }}</p>
-      <p>Description: {{ menu_item.description }}</p>
-      <p>Price: ${{ menu_item.price }}</p>
+      <p><strong>Name:</strong> {{ menu_item.name }}</p>
+      <p><strong>Description:</strong> {{ menu_item.description }}</p>
+      <p><strong>Price:</strong> {{ menu_item.price }}</p>
       <p><strong>Category:</strong> {{ menu_item.category }}</p>
       {% if menu_item.current is 1 %}
       <p class="current-yes"><strong>Current:</strong> Yes!</p>
@@ -79,9 +79,9 @@
     </div>
     {% endfor %}
 
-    <div class="meh">
+    
       <a href="{% url 'delete_all' %}"
-        ><button type="button" class="delete-button">DELETE ALL</button></a
+        ><button type="button" class="delete-button meh">DELETE ALL</button></a
       >
     </div>
   </body>
