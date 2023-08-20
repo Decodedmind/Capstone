@@ -62,7 +62,7 @@ def delete_menu_item(request, id):
 def delete_all_view(request):
     if request.method == "POST":
         if request.POST.get("yesno") == "YES":
-            delete_all_menu_items()
+            delete_all_except_wine()
             return redirect("restaurant_admin")
         else:
             return redirect("restaurant_admin")
