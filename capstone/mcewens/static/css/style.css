@@ -480,8 +480,8 @@ header .intro-text {
 
 /* restaurant menu-menu  */
 #restaurant-menu-menu .section-title {
-	background: #444 url(../img/sign.jpg) center center no-repeat fixed;
-	background-size: cover;
+    background: #444 url(../img/sign.jpg) center center no-repeat fixed;
+    background-size: contain; /* or background-size: auto; */
 }
 
 #restaurant-menu-menu .section-title h2 {
@@ -807,10 +807,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', end
 #footer a:hover {
 	color: #333;
 }
-@media only screen and (max-width: 768px) {
-    #restaurant-menu-menu .section-title {
-        background: #444 url(../img/sign.jpg) center center no-repeat;
-        background-size: cover;
-        background-attachment: initial; /* Reset background attachment */
-    }
-}
+
