@@ -167,7 +167,7 @@ def lunch_view(request):
 
 
 def brunch_view(request):
-    TYPES = ("Salads", "Sandwiches", "Entrees")
+    TYPES = ("Salads", "Soups", "Sandwiches", "Entrees")
     # get sub categories, pass in separately
     brunch_item = get_current_by_category("Brunch").values()
     return render(request, "sunday_brunch.html", {"types": TYPES, "items": brunch_item})
