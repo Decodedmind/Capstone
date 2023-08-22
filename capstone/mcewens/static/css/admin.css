@@ -276,19 +276,26 @@ h2 {
 
 .bg {
   width: 100%;
-  height: 100vh;
-  
+  height: 100vmax;
+
   align-items: center;
   justify-content: center;
-  background-size: cover; /* Use 'cover' instead of fixed percentages */
-  background-image: linear-gradient(
-    -45deg,
-    #336273 0%,
-    #336273 50%,
-    #336273 51%,
-    #D3582F 100%
-  );
+  background-size: 300% 300%;
+  background-image: linear-gradient( -45deg, #336273 0%, #336273 50%, #336273 51%, #D3582F 100% );
+  -webkit-animation: AnimateBG 20s ease infinite;
   animation: AnimateBG 10s ease infinite;
+}
+
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes AnimateBG {
@@ -302,11 +309,6 @@ h2 {
     background-position: 0% 50%;
   }
 }
-
-
-
-
-
 
 @media (max-width: 768px) {
   div {
