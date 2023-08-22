@@ -480,8 +480,8 @@ header .intro-text {
 
 /* restaurant menu-menu  */
 #restaurant-menu-menu .section-title {
-    background: #444 url(../img/sign.jpg) center center no-repeat fixed;
-    background-size: contain; /* or background-size: auto; */
+	background: #444 url(../img/sign2.jpg) center center no-repeat fixed;
+	background-size: cover;
 }
 
 #restaurant-menu-menu .section-title h2 {
@@ -807,4 +807,3 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', end
 #footer a:hover {
 	color: #333;
 }
-
