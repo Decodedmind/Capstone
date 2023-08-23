@@ -1134,8 +1134,20 @@ img {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  max-width: 40%;
+  max-width: 100%;
  ;
+}
+@media (max-width: 768px) {
+  .img-responsive-logo,
+  .thumbnail > img,
+  .thumbnail a > img,
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      display: block;
+      max-width: 40%; /* Adjust the max-width value as needed */
+      height: auto; /* Maintain aspect ratio */
+      margin: 0 auto; /* Center the image horizontally */
+  }
 }
 .img-rounded {
   border-radius: 6px;
