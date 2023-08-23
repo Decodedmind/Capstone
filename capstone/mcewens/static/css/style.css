@@ -401,7 +401,8 @@ header .intro-text {
 @media (max-width: 768px) {
 	#restaurant-menu-brunch .section-title {
 		background-size: contain; /* Adjust background size for better mobile display */
-		background-position: top center; /* Adjust background position for mobile */
+		background-position: top center; 
+		height: 100%;/* Adjust background position for mobile */
 	}
 }
 #restaurant-menu-brunch .section-title h2 {
@@ -455,6 +456,13 @@ header .intro-text {
 	font-weight: 600;
 	color: #555;
 	margin-top: -26px;
+}
+@media (max-width: 768px) {
+	#restaurant-menu-brunch .menu-item-price {
+		float: none; /* Reset float for mobile display */
+		font-size: 14px; /* Adjust font size for mobile */
+		margin-top: 5px; /* Adjust margin for better spacing */
+	}
 }
 
 /* restaurant wine  */
