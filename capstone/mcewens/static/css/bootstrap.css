@@ -1135,7 +1135,7 @@ img {
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       display: block;
-      max-width: 60%; /* Adjust the max-width value as needed */
+      max-width: 45%; /* Adjust the max-width value as needed */
       /* Center the image horizontally */
   }
 }
