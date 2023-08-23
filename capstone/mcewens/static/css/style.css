@@ -512,6 +512,16 @@ header .intro-text {
 	color: #555;
 	margin-top: -26px;
 }
+@media (max-width: 768px) {
+    #restaurant-menu-wine .menu-item-price {
+        float: none; /* Clear the float for mobile layout */
+        display: block; /* Change display to block for better positioning */
+        text-align: right; /* Align the price text to the right */
+        font-weight: 600;
+        color: #555;
+        margin-top: 5px; /* Adjust the margin for better spacing */
+    }
+}
 
 /* restaurant menu-menu  */
 #restaurant-menu-menu .section-title {
