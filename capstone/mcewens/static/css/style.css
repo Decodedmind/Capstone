@@ -364,6 +364,14 @@ header .intro-text {
 	color: #555;
 	border-bottom: 2px dotted rgb(213, 213, 213);
 }
+
+@media (max-width: 768px) {
+	/* Adjusted CSS for menu item name on smaller screens */
+	#restaurant-menu-dinner .menu-item-name {
+	  font-size: 14px; /* Decrease font size for better fit on mobile */
+	  margin-bottom: 8px; /* Add spacing between menu items */
+	}
+  }
 #restaurant-menu-dinner .menu-item-description {
 	font-style: italic;
 	font-size: 15px;
@@ -487,6 +495,14 @@ header .intro-text {
 	color: #555;
 	margin-top: -26px;
 }
+
+@media (max-width: 768px) {
+	#restaurant-menu-wine .menu-item-price {
+	  float: none; /* Remove float on mobile */
+	  margin-top: 10px; /* Adjust margin for mobile spacing */
+	  text-align: right; /* Center align on mobile */
+	}
+  }
 
 /* restaurant menu-menu  */
 #restaurant-menu-menu .section-title {
