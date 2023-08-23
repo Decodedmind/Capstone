@@ -1129,7 +1129,7 @@ img {
  ;
 }
 @media (max-width: 768px) {
-  .img-responsive,
+  .img-responsive-logo,
   .thumbnail > img,
   .thumbnail a > img,
   .carousel-inner > .item > img,
