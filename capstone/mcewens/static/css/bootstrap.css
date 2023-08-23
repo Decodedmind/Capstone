@@ -1128,6 +1128,17 @@ img {
   max-width: 100%;
  ;
 }
+@media (max-width: 768px) {
+  .img-responsive-logo,
+  .thumbnail > img,
+  .thumbnail a > img,
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      display: block;
+      max-width: 60%; /* Adjust the max-width value as needed */
+      /* Center the image horizontally */
+  }
+}
 .img-rounded {
   border-radius: 6px;
 }
