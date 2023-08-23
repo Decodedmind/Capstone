@@ -304,15 +304,7 @@ header .intro-text {
 #restaurant-menu .menu-item {
 	margin: 35px 0;
 	font-size: 18px;
-  }
-  
-  @media (max-width: 768px) {
-	/* Adjusted CSS for menu items on smaller screens */
-	#restaurant-menu .menu-item {
-	  margin: 20px 0; /* Decrease the margin for better spacing */
-	  font-size: 16px; /* Adjust font size for better readability */
-	}
-  }
+}
 #restaurant-menu .menu-item-name {
 	font-weight: 600;
 	font-size: 17px;
@@ -476,7 +468,15 @@ header .intro-text {
 	font-size: 17px;
 	color: #555;
 	border-bottom: 2px dotted rgb(213, 213, 213);
-}
+  }
+  
+  @media (max-width: 768px) {
+	/* Adjusted CSS for menu item name on smaller screens */
+	#restaurant-menu-wine .menu-item-name {
+	  font-size: 14px; /* Decrease font size for better fit on mobile */
+	  margin-bottom: 8px; /* Add spacing between menu items */
+	}
+  }
 #restaurant-menu-wine .menu-item-description {
 	font-style: italic;
 	font-size: 15px;
