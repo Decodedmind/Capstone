@@ -22,7 +22,6 @@ class MenuItem(models.Model):
         ("Soups", "Soups"),
         ("Entrees", "Entrees"),
         ("Sandwiches", "Sandwiches"),
-        ("Desserts", "Desserts"),
         ("Wine", "Wine"),
         ("Cocktails", "Cocktails"),
     )
