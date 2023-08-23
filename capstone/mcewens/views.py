@@ -153,21 +153,21 @@ def get_items_by_category_view(request):
 
 
 def dinner_view(request):
-    TYPES = ("Appetizers", "Salads", "Entrees", "Wine", "Cocktails")
+    TYPES = ("Appetizers", "Salads", "Entrees")
     # get sub categories, pass in separately
     dinner_item = get_current_by_category("Dinner").values()
     return render(request, "dinner.html", {"types": TYPES, "items": dinner_item})
 
 
 def lunch_view(request):
-    TYPES = ("Salads", "Sandwiches", "Entrees", "Wine", "Cocktails")
+    TYPES = ("Salads", "Sandwiches", "Entrees")
     # get sub categories, pass in separately
     lunch_item = get_current_by_category("Lunch").values()
     return render(request, "lunch.html", {"types": TYPES, "items": lunch_item})
 
 
 def brunch_view(request):
-    TYPES = ("Salads", "Soups", "Sandwiches", "Entrees", "Wine", "Cocktails")
+    TYPES = ("Salads", "Soups", "Sandwiches", "Entrees")
     # get sub categories, pass in separately
     brunch_item = get_current_by_category("Brunch").values()
     return render(request, "sunday_brunch.html", {"types": TYPES, "items": brunch_item})
