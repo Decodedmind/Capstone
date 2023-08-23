@@ -493,6 +493,15 @@ header .intro-text {
 	color: #555;
 	border-bottom: 2px dotted rgb(213, 213, 213);
 }
+@media (max-width: 768px) {
+    #restaurant-menu-wine .menu-item-name {
+        font-weight: 600;
+        font-size: 14px; /* Adjust the font size for mobile screens */
+        color: #555;
+        border-bottom: 1px dotted rgb(213, 213, 213); /* Adjust the border size for a lighter look */
+        padding-bottom: 5px; /* Add some spacing at the bottom for better readability */
+    }
+}
 #restaurant-menu-wine .menu-item-description {
 	font-style: italic;
 	font-size: 15px;
