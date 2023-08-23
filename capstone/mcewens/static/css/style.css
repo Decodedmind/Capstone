@@ -337,7 +337,7 @@ header .intro-text {
 	#restaurant-menu-dinner .section-title {
 		background-size: contain; /* Adjust background size for better mobile display */
 		background-position: top center;
-		height: 150%; /* Adjust background position for mobile */
+		height: 300%; /* Adjust background position for mobile */
 	}
 }
 
