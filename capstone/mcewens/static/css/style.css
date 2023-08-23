@@ -334,7 +334,7 @@ header .intro-text {
 }
 @media (max-width: 768px) {
 	#restaurant-menu-dinner .section-title {
-		background-size: 150%; /* Adjust background size for better mobile display */
+		background-size: 200%; /* Adjust background size for better mobile display */
 		background-position: top center; /* Adjust background position for mobile */
 	}
 }
@@ -473,7 +473,7 @@ header .intro-text {
 }
 @media (max-width: 768px) {
 	#restaurant-menu-wine .section-title {
-		background-size: 150%;/* Adjust background size for better mobile display */
+		background-size: 250%;/* Adjust background size for better mobile display */
 		background-position: top center; /* Adjust background position for mobile */
 	}
 }
