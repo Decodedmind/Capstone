@@ -432,6 +432,12 @@ header .intro-text {
 	background: #444 url(../img/drinks.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
+@media (max-width: 768px) {
+	#restaurant-menu-wine .section-title {
+		background-size: 200%;/* Adjust background size for better mobile display */
+		background-position: top center; /* Adjust background position for mobile */
+	}
+}
 
 #restaurant-menu-wine .section-title h2 {
 	color: #fff;
