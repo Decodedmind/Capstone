@@ -400,10 +400,10 @@ header .intro-text {
 }
 @media (max-width: 768px) {
 	#restaurant-menu-brunch .section-title {
-		background: #444 url(../img/benny.jpg) center center no-repeat;
+		background: #444 url(../img/benny.jpg) center center no-repeat fixed;
 		background-size: contain; /* Adjust background size for better mobile display */
-		background-position: top center; 
-		height: 100%;/* Adjust background position for mobile */
+		 
+/* Adjust background position for mobile */
 	}
 }
 #restaurant-menu-brunch .section-title h2 {
