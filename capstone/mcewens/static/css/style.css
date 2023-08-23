@@ -401,7 +401,7 @@ header .intro-text {
 @media (max-width: 768px) {
 	#restaurant-menu-brunch .section-title {
 		background: #444 url(../img/benny.jpg) center center no-repeat fixed;
-		background-size: 110%;
+		background-size: 150%;
 		 
 /* Adjust background position for mobile */
 	}
