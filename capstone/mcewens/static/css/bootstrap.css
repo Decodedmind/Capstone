@@ -1125,7 +1125,16 @@ img {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  max-width: 45%;
+  max-width: 100%;
+ ;
+}
+.img-responsive-logo,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 60%;
  ;
 }
 .img-rounded {
