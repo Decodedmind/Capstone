@@ -167,11 +167,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	padding: 110px 0;
 	background: rgba(0, 0, 0, 0.7);
 }
-@media (max-width: 768px) {
-	.section-title .overlay {
-		padding: 60px 0; /* Adjust padding for better mobile display */
-	}
-}
+
 .section-title p {
 	font-size: 22px;
 	color: rgba(255,255,255,0.8);
@@ -339,7 +335,7 @@ header .intro-text {
 }
 @media (max-width: 768px) {
 	#restaurant-menu-dinner .section-title {
-		background-size: cover; /* Adjust background size for better mobile display */
+		background-size: auto; /* Adjust background size for better mobile display */
 		background-position: top center; /* Adjust background position for mobile */
 	}
 }
