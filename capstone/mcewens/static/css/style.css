@@ -201,10 +201,9 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	height: 100vh;
 	background: url(../img/patrons4.jpg) no-repeat center center;
 	background-color: #e5e5e5;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
+	
 	background-size: cover;
-	-o-background-size: cover;
+	
 }
 .intro .overlay {
 	background: rgba(0,0,0,0.4);
