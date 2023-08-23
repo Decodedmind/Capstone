@@ -1145,8 +1145,7 @@ img {
   .carousel-inner > .item > a > img {
       display: block;
       max-width: 40%; /* Adjust the max-width value as needed */
-      height: auto; /* Maintain aspect ratio */
-      margin: 0 auto; /* Center the image horizontally */
+       /* Center the image horizontally */
   }
 }
 .img-rounded {
