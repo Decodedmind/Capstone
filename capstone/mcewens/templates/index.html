@@ -41,7 +41,7 @@
         </button>
         {% comment %} <a class="navbar-brand page-scroll" href="#page-top">McEwen's</a> {% endcomment %}
         {% if user.is_authenticated %} <a href="{%url 'restaurant_admin'%}">
-          <img src="{% static 'img/logo_360.png' %}" class="img-responsive" alt="Logo" />
+          <img src="{% static 'img/logo_360.png' %}" class="img-responsive-logo" alt="Logo" />
         </a>
         {%else%}
         <a href="{%url 'home'%}">
