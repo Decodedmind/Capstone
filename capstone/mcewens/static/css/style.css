@@ -424,6 +424,12 @@ header .intro-text {
 	color: #555;
 	border-bottom: 2px dotted rgb(213, 213, 213);
 }
+@media (max-width: 768px) {
+	#restaurant-menu-brunch .menu-item-name {
+		font-size: 14px; /* Adjust font size for mobile screens */
+		border-bottom: 1px dotted rgb(213, 213, 213); /* Thinner border for mobile */
+	}
+}
 #restaurant-menu-brunch .menu-item-description {
 	font-style: italic;
 	font-size: 15px;
@@ -440,7 +446,12 @@ header .intro-text {
 	background: #444 url(../img/drinks.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
-
+@media (max-width: 768px) {
+	#restaurant-menu-wine .section-title {
+		background-size: contain; /* Adjust background size for better mobile display */
+		background-position: top center; /* Adjust background position for mobile */
+	}
+}
 #restaurant-menu-wine .section-title h2 {
 	color: #fff;
 }
