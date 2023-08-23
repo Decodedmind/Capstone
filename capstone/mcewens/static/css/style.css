@@ -269,7 +269,12 @@ header .intro-text {
 	background: #444 url(../img/farmer.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
-
+@media (max-width: 768px) {
+	#restaurant-menu .section-title {
+		background-size: contain; /* Adjust background size for better mobile display */
+		background-position: top center; /* Adjust background position for mobile */
+	}
+}
 
 
 #restaurant-menu .section-title h2 {
@@ -326,6 +331,12 @@ header .intro-text {
 #restaurant-menu-dinner .section-title {
 	background: #444 url(../img/duck.jpg) center center no-repeat fixed;
 	background-size: cover;
+}
+@media (max-width: 768px) {
+	#restaurant-menu-dinner .section-title {
+		background-size: contain; /* Adjust background size for better mobile display */
+		background-position: top center; /* Adjust background position for mobile */
+	}
 }
 
 #restaurant-menu-dinner .section-title h2 {
@@ -387,7 +398,12 @@ header .intro-text {
 	background: #444 url(../img/benny.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
-
+@media (max-width: 768px) {
+	#restaurant-menu-brunch .section-title {
+		background-size: contain; /* Adjust background size for better mobile display */
+		background-position: top center; /* Adjust background position for mobile */
+	}
+}
 #restaurant-menu-brunch .section-title h2 {
 	color: #fff;
 }
