@@ -400,12 +400,12 @@ header .intro-text {
 }
 @media (max-width: 768px) {
 	#restaurant-menu-brunch .section-title {
-		background: #444 url(../img/benny.jpg) center center no-repeat fixed;
+		background-position: top center;
 		background-size: 150%;
 		 
 /* Adjust background position for mobile */
 	}
-}
+	
 #restaurant-menu-brunch .section-title h2 {
 	color: #fff;
 }
@@ -875,4 +875,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', end
 }
 #footer a:hover {
 	color: #333;
+}
 }
